@@ -39,3 +39,25 @@ footer i{
     padding: 8px;
 }
 
+/* Home screen */
+main div{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: white;
+    border-radius: 4px;
+}
+
+#btn-start {
+    margin: 30% 10%;
+    width: 80%;
+    font-size: 40px;
+}
+
+#btn-rules, #btn-leaderboard {
+    margin: 0 10% 32px;
+    width: 80%;
+    font-size: 20px;
+}
+
+
