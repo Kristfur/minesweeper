@@ -22,21 +22,50 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('logo').addEventListener("click", displayHome);
     
     //Add event listeners to game tiles dynamically
-    //Credit: typeofnan
-    //https://typeofnan.dev/how-to-bind-event-listeners-on-dynamically-created-elements-in-javascript/
     let container = document.getElementById('game-board');
-    container.addEventListener("click", function(event){
-        if(event.target.classList.contains('hidden-tile')){
-            //Handle tile revel code here
-            let classes = event.target.classList;
-            event.target.remove();
-            this.innerHTML += `<button class="revealed-tile ${classes[1]}" 
-            style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
-            background: url('../assets/images/number-${classes[1]}.png') no-repeat center center;
-            background-size: contain;"></button>`;   
-        }
+    let pressTime = null;
+    let longPress = false;
+    let eventTargetDown;
+    container.addEventListener("mousedown", function(event){
+        eventTargetDown = event.target;
+        longPress = false;
+        pressTime = null;
+        pressTime = setTimeout(function() {            
+            longPress = true;
+            pressTime = null;
+        }, 500);        
     });
-})
+    //Use mousedown, mouseup and a timer to see if user did a short or long click
+    //Short click reveals tile
+    //Long click flaggs or unflaggs tile
+    container.addEventListener("mouseup", function(event){
+        pressTime = null;
+        if (eventTargetDown === event.target){
+            if(event.target.classList.contains('hidden-tile') && !longPress){
+                let classes = event.target.classList;
+                event.target.remove();
+                this.innerHTML += `<button class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
+                background: url('../assets/images/number-${classes[1]}.png') no-repeat center center;
+                background-size: contain;"></button>`;   
+            } else if(event.target.classList.contains('hidden-tile') && longPress){
+                let classes = event.target.classList;
+                console.log("flag");
+                event.target.remove();
+                this.innerHTML += `<button class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
+                background: url('../assets/images/flag.png') no-repeat center center;
+                background-size: contain; background-color: #bbbbbb;"></button>`;   
+            } else if(event.target.classList.contains('flagged-tile') && longPress){
+                let classes = event.target.classList;
+                event.target.remove();
+                this.innerHTML += `<button class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}";</button>`;   
+            }
+        }
+        longPress = false;
+    });
+});
 
 function displayHome(){
     let pages = document.getElementsByClassName("page");
