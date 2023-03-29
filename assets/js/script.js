@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function(){
         button.addEventListener("click", function(){
             if (this.getAttribute("data-type") === "start"){
                 displayBoard();
+            } else if (this.getAttribute("data-type") === "reset"){
+                generateBoard(); //*******
             } else if (this.getAttribute("data-type") === "rules"){
                 displayRules();
             } else if (this.getAttribute("data-type") === "leaderboard"){
@@ -74,7 +76,7 @@ function generateBoard(){
 
     //Randomly populate board with a set number mines
     //   *Mines are represented by the number 9
-    let totalMines = 4;   //******
+    let totalMines = 8;   //******
     let mineCount = 0;
     while(mineCount < totalMines){
         let mineX = Math.floor(Math.random() * gridSize);
@@ -86,8 +88,123 @@ function generateBoard(){
         }
     }
 
-    console.log(board);
+    //Get numbers in the tiles representing the amount of adjacent mines
+    board = getAdjacentMines(board);
+
+    document.getElementById("game-board").innerHTML = '';
+
     for (let i = 0; i < gridSize; i++){
         document.getElementById("game-board").innerHTML += `<p>${board[i]}</p>`;
     }
+}
+
+/**
+ * Populate board with numbers representing the amount of 
+ * adjacent mines (9) (diagonals included)
+ * @param {*2d array } board 
+ */
+function getAdjacentMines(board){    
+    let gridSize = board.length;
+
+    for (let y = 0; y < gridSize; y++){
+        for (let x = 0; x < gridSize; x++){
+            //Logic to only check valid adjacent tiles
+            if (board[y][x] !== 9){
+                if (y == 0){
+                    if (x == 0){
+                        board[y][x] += right(board, y, x);
+                        board[y][x] += bottom(board, y, x);
+                        board[y][x] += bottomRight(board, y, x);
+                    } else if (x == gridSize - 1){
+                        board[y][x] += left(board, y, x);
+                        board[y][x] += bottomLeft(board, y, x);
+                        board[y][x] += bottom(board, y, x);
+                    } else {
+                        board[y][x] += left(board, y, x);                    
+                        board[y][x] += right(board, y, x);
+                        board[y][x] += bottomLeft(board, y, x);
+                        board[y][x] += bottom(board, y, x);
+                        board[y][x] += bottomRight(board, y, x);
+                    }
+                } else if (y == gridSize - 1){
+                    if (x == 0){  
+                        board[y][x] += above(board, y, x);
+                        board[y][x] += aboveRight(board, y, x);
+                        board[y][x] += right(board, y, x);
+                    } else if (x == gridSize - 1){
+                        board[y][x] += aboveLeft(board, y, x);
+                        board[y][x] += above(board, y, x);                    
+                        board[y][x] += left(board, y, x);
+                    } else {
+                        board[y][x] += aboveLeft(board, y, x);
+                        board[y][x] += above(board, y, x);
+                        board[y][x] += aboveRight(board, y, x);
+                        board[y][x] += left(board, y, x);                    
+                        board[y][x] += right(board, y, x);
+                    }
+                } else {
+                    if (x == 0){
+                        board[y][x] += above(board, y, x);
+                        board[y][x] += aboveRight(board, y, x);
+                        board[y][x] += right(board, y, x);                    
+                        board[y][x] += bottom(board, y, x);
+                        board[y][x] += bottomRight(board, y, x);
+                    } else if (x == gridSize - 1){
+                        board[y][x] += aboveLeft(board, y, x);
+                        board[y][x] += above(board, y, x);
+                        board[y][x] += left(board, y, x);
+                        board[y][x] += bottomLeft(board, y, x);
+                        board[y][x] += bottom(board, y, x);
+                    } else {
+                        board[y][x] += aboveLeft(board, y, x);
+                        board[y][x] += above(board, y, x);
+                        board[y][x] += aboveRight(board, y, x);
+                        board[y][x] += left(board, y, x);
+                        board[y][x] += right(board, y, x);
+                        board[y][x] += bottomLeft(board, y, x);
+                        board[y][x] += bottom(board, y, x);
+                        board[y][x] += bottomRight(board, y, x);
+                    }
+                }
+            }
+        }
+    }
+
+    return(board);
+}
+
+//A collection of smaller functions with similar tasks
+//They each take the parameters of board[][], y and x position
+//and return 1 if the adjacent tile is a mine (9)
+function aboveLeft(board, y, x){
+    if(board[y - 1][x - 1] == 9){ return 1 }
+    else { return 0 }
+}
+function above(board, y, x){
+    if(board[y - 1][x] == 9){ return 1 }
+    else { return 0 }
+}
+function aboveRight(board, y, x){
+    if(board[y - 1][x + 1] == 9){ return 1 }
+    else { return 0 }
+}
+function left(board, y, x){
+    if(board[y][x - 1] == 9){ return 1 }
+    else { return 0 }
+}
+function right(board, y, x){
+    if(board[y][x + 1] == 9){ return 1 }
+    else { return 0 }
+}
+function bottomLeft(board, y, x){
+    if(board[y + 1][x - 1] == 9){ return 1 }
+    else { return 0 }
+}
+function bottom(board, y, x){
+    if(board[y + 1][x] == 9){ return 1 }
+    else { return 0 }
+}
+function bottomRight(board, y, x){
+    if(board[y + 1][x + 1] == 9){ return 1 }
+    else { return 0 }
 }

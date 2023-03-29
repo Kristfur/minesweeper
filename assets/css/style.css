@@ -63,4 +63,7 @@ footer i{
 }
 
 /* Game page */
-
+#game-board {
+    font-size: 20px;
+    font-family: monospace;
+}
