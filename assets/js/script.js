@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function(){
         pressTime = setTimeout(function() {            
             longPress = true;
             pressTime = null;
-        }, 500);        
+        }, 500);
+        
     });
     //Use mousedown, mouseup and a timer to see if user did a short or long click
     //Short click reveals tile
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 event.target.remove();
                 this.innerHTML += `<button class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
-                background: url('../assets/images/number-${classes[1]}.png') no-repeat center center;
+                background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></button>`;   
             } else if(event.target.classList.contains('hidden-tile') && longPress){
                 let classes = event.target.classList;
@@ -54,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 event.target.remove();
                 this.innerHTML += `<button class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
-                background: url('../assets/images/flag.png') no-repeat center center;
+                background: url('assets/images/flag.png') no-repeat center center;
                 background-size: contain; background-color: #bbbbbb;"></button>`;   
             } else if(event.target.classList.contains('flagged-tile') && longPress){
                 let classes = event.target.classList;
