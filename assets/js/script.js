@@ -20,6 +20,22 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     document.getElementById('logo').addEventListener("click", displayHome);
+    
+    //Add event listeners to game tiles dynamically
+    //Credit: typeofnan
+    //https://typeofnan.dev/how-to-bind-event-listeners-on-dynamically-created-elements-in-javascript/
+    let container = document.getElementById('game-board');
+    container.addEventListener("click", function(event){
+        if(event.target.classList.contains('hidden-tile')){
+            //Handle tile revel code here
+            let classes = event.target.classList;
+            event.target.remove();
+            this.innerHTML += `<button class="revealed-tile ${classes[1]}" 
+            style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
+            background: url('../assets/images/number-${classes[1]}.png') no-repeat center center;
+            background-size: contain;"></button>`;   
+        }
+    });
 })
 
 function displayHome(){
@@ -227,10 +243,13 @@ function buildBoardTiles(board){
 
     for (let y = 0; y < gridSize; y++){
         for (let x = 0; x < gridSize; x++){
-            gameArea.innerHTML += `<button class="hidden-tile" 
-            style="grid-column:${y + 1}; grid-row:${x + 1}; 
-            background: url('../assets/images/number-${board[y][x]}.png') no-repeat center center;
-            background-size: contain;"></span>`
+            //Tile classes:
+            //hidden-tile    -> wether tile has been revealed or not
+            //${board[x][y]} -> number of adjacent mines, or is a mine (9)
+            //$y{y + 1}      -> y position in grid
+            //$x{x + 1}      -> x position in grid
+            gameArea.innerHTML += `<button class="hidden-tile ${board[y][x]} y${y + 1} x${x + 1}" 
+            style="grid-column:${y + 1}; grid-row:${x + 1};"></button>`
         }
     }
 }
