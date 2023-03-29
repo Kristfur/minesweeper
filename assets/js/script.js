@@ -91,11 +91,7 @@ function generateBoard(){
     //Get numbers in the tiles representing the amount of adjacent mines
     board = getAdjacentMines(board);
 
-    document.getElementById("game-board").innerHTML = '';
-
-    for (let i = 0; i < gridSize; i++){
-        document.getElementById("game-board").innerHTML += `<p>${board[i]}</p>`;
-    }
+    buildBoardTiles(board);
 }
 
 /**
@@ -176,6 +172,7 @@ function getAdjacentMines(board){
 //A collection of smaller functions with similar tasks
 //They each take the parameters of board[][], y and x position
 //and return 1 if the adjacent tile is a mine (9)
+//otherwise they return 0
 function aboveLeft(board, y, x){
     if(board[y - 1][x - 1] == 9){ return 1 }
     else { return 0 }
@@ -207,4 +204,33 @@ function bottom(board, y, x){
 function bottomRight(board, y, x){
     if(board[y + 1][x + 1] == 9){ return 1 }
     else { return 0 }
+}
+
+/**
+ * Builds the HTML for the game board using generated board
+ * @param {*2d array} board 
+ */
+function buildBoardTiles(board){
+    let gameArea = document.getElementById('game-board');
+    let gridSize = board.length;
+    let tileLength = Math.floor(100/gridSize);
+
+    //Reset HTML elements before populating
+    gameArea.style.gridTemplateColumns = "";
+    gameArea.style.gridTemplateRows = "";
+    gameArea.innerHTML = "";
+
+    for (let t = 0; t < gridSize; t++){
+        gameArea.style.gridTemplateColumns += `${tileLength}% `;
+        gameArea.style.gridTemplateRows += `${tileLength}% `;
+    }
+
+    for (let y = 0; y < gridSize; y++){
+        for (let x = 0; x < gridSize; x++){
+            gameArea.innerHTML += `<button class="hidden-tile" 
+            style="grid-column:${y + 1}; grid-row:${x + 1}; 
+            background: url('../assets/images/number-${board[y][x]}.png') no-repeat center center;
+            background-size: contain;"></span>`
+        }
+    }
 }

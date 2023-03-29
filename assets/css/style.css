@@ -64,6 +64,12 @@ footer i{
 
 /* Game page */
 #game-board {
-    font-size: 20px;
-    font-family: monospace;
+    display: grid;
+    margin: 16px 5%;
+    width: 90%;
+    aspect-ratio : 1 / 1;
+
+}
+
+.hidden-tile{
 }
