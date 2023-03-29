@@ -1,3 +1,41 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Coda&display=swap');
 
+/* General Styles */
+body {
+    font-family: Coda, sans-serif;
+    background-color: #e4e4e4;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Header */
+header {
+    margin: 32px 0;
+    font-family: Bungee, monospace;
+}
+
+header img {
+    width: 80%;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 32px 0;
+    text-align: center;
+}
+
+footer i{
+    font-size: 300%;
+    vertical-align: -25%;
+    padding: 8px;
+}
+
