@@ -72,4 +72,13 @@ footer i{
 
 .hidden-tile {
     background-color: #bbbbbb;
+    border: 2px #999999 solid;
+}
+
+.flagged-tile {
+    border: 2px #999999 solid;
+}
+
+.revealed-tile {
+    border: 2px #999999 solid;
 }

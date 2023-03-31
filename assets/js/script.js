@@ -55,23 +55,23 @@ document.addEventListener("DOMContentLoaded", function(){
             if(event.target.classList.contains('hidden-tile') && !longPress){
                 let classes = event.target.classList;
                 event.target.remove();
-                this.innerHTML += `<button class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                this.innerHTML += `<span class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
-                background-size: contain;"></button>`;   
+                background-size: contain;"></span>`;   
             } else if(event.target.classList.contains('hidden-tile') && longPress){
                 let classes = event.target.classList;
                 console.log("flag");
                 event.target.remove();
-                this.innerHTML += `<button class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                this.innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
                 background: url('assets/images/flag.png') no-repeat center center;
-                background-size: contain; background-color: #bbbbbb;"></button>`;   
+                background-size: contain; background-color: #bbbbbb;"></span>`;   
             } else if(event.target.classList.contains('flagged-tile') && longPress){
                 let classes = event.target.classList;
                 event.target.remove();
-                this.innerHTML += `<button class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}";</button>`;   
+                this.innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}";</span>`;   
             }
         }
         longPress = false;
@@ -84,23 +84,23 @@ document.addEventListener("DOMContentLoaded", function(){
             if(event.target.classList.contains('hidden-tile') && !longPress){
                 let classes = event.target.classList;
                 event.target.remove();
-                this.innerHTML += `<button class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                this.innerHTML += `<span class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
-                background-size: contain;"></button>`;   
+                background-size: contain;"></span>`;   
             } else if(event.target.classList.contains('hidden-tile') && longPress){
                 let classes = event.target.classList;
                 console.log("flag");
                 event.target.remove();
-                this.innerHTML += `<button class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                this.innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
                 background: url('assets/images/flag.png') no-repeat center center;
-                background-size: contain; background-color: #bbbbbb;"></button>`;   
+                background-size: contain; background-color: #bbbbbb;"></span>`;   
             } else if(event.target.classList.contains('flagged-tile') && longPress){
                 let classes = event.target.classList;
                 event.target.remove();
-                this.innerHTML += `<button class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}";</button>`;   
+                this.innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}";</span>`;   
             }
         }
         longPress = false;
@@ -317,8 +317,8 @@ function buildBoardTiles(board){
             //${board[x][y]} -> number of adjacent mines, or is a mine (9)
             //$y{y + 1}      -> y position in grid
             //$x{x + 1}      -> x position in grid
-            gameArea.innerHTML += `<button class="hidden-tile ${board[y][x]} y${y + 1} x${x + 1}" 
-            style="grid-column:${y + 1}; grid-row:${x + 1};"></button>`
+            gameArea.innerHTML += `<span class="hidden-tile ${board[y][x]} y${y + 1} x${x + 1}" 
+            style="grid-column:${y + 1}; grid-row:${x + 1};"></span>`
         }
     }
 }
