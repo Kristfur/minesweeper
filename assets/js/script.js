@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function(){
         pressTime = null;
         pressTime = setTimeout(function() {            
             longPress = true;
-            pressTime = null;
         }, 500);
         
     });
@@ -46,13 +45,12 @@ document.addEventListener("DOMContentLoaded", function(){
         pressTime = null;
         pressTime = setTimeout(function() {            
             longPress = true;
-            pressTime = null;
         }, 500);
         
     });
 
     container.addEventListener("mouseup", function(event){
-        pressTime = null;
+        clearTimeout(pressTime);
         if (eventTargetDown === event.target){
             if(event.target.classList.contains('hidden-tile') && !longPress){
                 let classes = event.target.classList;
@@ -80,7 +78,8 @@ document.addEventListener("DOMContentLoaded", function(){
     });
     //Mobile devices
     container.addEventListener("ontouchend", function(event){
-        pressTime = null;
+        console.log("m");
+        clearTimeout(pressTime);
         if (eventTargetDown === event.target){
             if(event.target.classList.contains('hidden-tile') && !longPress){
                 let classes = event.target.classList;
