@@ -51,7 +51,8 @@ document.addEventListener("DOMContentLoaded", function(){
         }, 500);
     });
     //Touchscreen devices
-    container.addEventListener("ontouchstart", function(event){
+    container.addEventListener("touchstart", function(event){
+        event.preventDefault();
         eventTargetDown = event.target;
         longPress = false;
         pressTime = null;
@@ -89,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function(){
         longPress = false;
     });
     //Mobile devices
-    container.addEventListener("ontouchend", function(event){
+    container.addEventListener("touchend", function(event){
         clearTimeout(pressTime);
         if (eventTargetDown === event.target){
             if(event.target.classList.contains('hidden-tile') && !longPress){
