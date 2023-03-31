@@ -33,10 +33,22 @@ document.addEventListener("DOMContentLoaded", function(){
         eventTargetDown = event.target;
         longPress = false;
         pressTime = null;
-        pressTime = setTimeout(function() {            
-            longPress = true;
+        pressTime = setTimeout(function() {    
+            longPress = true;        
+            if(event.target.classList.contains('hidden-tile')){
+                let classes = event.target.classList;
+                event.target.remove();
+                document.getElementById('game-board').innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
+                background: url('assets/images/flag.png') no-repeat center center;
+                background-size: contain; background-color: #bbbbbb;"></span>`;   
+            } else if(event.target.classList.contains('flagged-tile')){
+                let classes = event.target.classList;
+                event.target.remove();
+                document.getElementById('game-board').innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}";</span>`;   
+            }
         }, 500);
-        
     });
     //Touchscreen devices
     container.addEventListener("ontouchstart", function(event){
@@ -45,7 +57,20 @@ document.addEventListener("DOMContentLoaded", function(){
         pressTime = null;
         pressTime = setTimeout(function() {            
             longPress = true;
-        }, 500);
+            if(event.target.classList.contains('hidden-tile')){
+                let classes = event.target.classList;
+                event.target.remove();
+                document.getElementById('game-board').innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
+                background: url('assets/images/flag.png') no-repeat center center;
+                background-size: contain; background-color: #bbbbbb;"></span>`;   
+            } else if(event.target.classList.contains('flagged-tile')){
+                let classes = event.target.classList;
+                event.target.remove();
+                document.getElementById('game-board').innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}";</span>`;   
+            }
+        }, 350);
         
     });
 
@@ -59,26 +84,12 @@ document.addEventListener("DOMContentLoaded", function(){
                 style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></span>`;   
-            } else if(event.target.classList.contains('hidden-tile') && longPress){
-                let classes = event.target.classList;
-                console.log("flag");
-                event.target.remove();
-                this.innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
-                background: url('assets/images/flag.png') no-repeat center center;
-                background-size: contain; background-color: #bbbbbb;"></span>`;   
-            } else if(event.target.classList.contains('flagged-tile') && longPress){
-                let classes = event.target.classList;
-                event.target.remove();
-                this.innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}";</span>`;   
             }
         }
         longPress = false;
     });
     //Mobile devices
     container.addEventListener("ontouchend", function(event){
-        console.log("m");
         clearTimeout(pressTime);
         if (eventTargetDown === event.target){
             if(event.target.classList.contains('hidden-tile') && !longPress){
@@ -88,19 +99,6 @@ document.addEventListener("DOMContentLoaded", function(){
                 style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></span>`;   
-            } else if(event.target.classList.contains('hidden-tile') && longPress){
-                let classes = event.target.classList;
-                console.log("flag");
-                event.target.remove();
-                this.innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
-                background: url('assets/images/flag.png') no-repeat center center;
-                background-size: contain; background-color: #bbbbbb;"></span>`;   
-            } else if(event.target.classList.contains('flagged-tile') && longPress){
-                let classes = event.target.classList;
-                event.target.remove();
-                this.innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}";</span>`;   
             }
         }
         longPress = false;
