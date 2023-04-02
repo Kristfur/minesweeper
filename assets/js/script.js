@@ -54,14 +54,14 @@ document.addEventListener("DOMContentLoaded", function(){
                 let classes = event.target.classList;
                 event.target.remove();
                 document.getElementById('game-board').innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
+                style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background: url('assets/images/flag.png') no-repeat center center;
                 background-size: contain; background-color: #bbbbbb;"></span>`;   
             } else if(event.target.classList.contains('flagged-tile')){
                 let classes = event.target.classList;
                 event.target.remove();
                 document.getElementById('game-board').innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}";</span>`;   
+                style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}";</span>`;   
             }
         }, 500);
     });
@@ -77,14 +77,14 @@ document.addEventListener("DOMContentLoaded", function(){
                 let classes = event.target.classList;
                 event.target.remove();
                 document.getElementById('game-board').innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
+                style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background: url('assets/images/flag.png') no-repeat center center;
                 background-size: contain; background-color: #bbbbbb;"></span>`;   
             } else if(event.target.classList.contains('flagged-tile')){
                 let classes = event.target.classList;
                 event.target.remove();
                 document.getElementById('game-board').innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}";</span>`;   
+                style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}";</span>`;   
             }
         }, 350);
         
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 let classes = event.target.classList;
                 event.target.remove();
                 this.innerHTML += `<span class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
+                style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></span>`;   
 
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 let classes = event.target.classList;
                 event.target.remove();
                 this.innerHTML += `<span class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
+                style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></span>`;
 
@@ -182,7 +182,7 @@ function displayLeaderboard(){
  * Generates a new random board based on the game settings
  */
 function generateBoard(){
-    let gridSize = 5;   //******
+    let gridSize = document.getElementById('sel-grid-size').value;
     let board = []
 
     //Generate empty 2d array: 'board'
@@ -196,7 +196,8 @@ function generateBoard(){
 
     //Randomly populate board with a set number mines
     //   *Mines are represented by the number 9
-    let totalMines = 8;   //******
+    let totalMines = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count').value / 100);   
+    console.log(totalMines);
     let mineCount = 0;
     while(mineCount < totalMines){
         let mineX = Math.floor(Math.random() * gridSize);
