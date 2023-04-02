@@ -77,13 +77,6 @@ footer i{
     background-color: rgba(0,0,0,0.4);
 }
 
-/* Settings */
-#settings-content {
-    margin: 20% auto;
-    background-color: #e4e4e4;
-    border: 2px solid #ffffff;
-}
-
 .close {
     color: #000000;
     font-size: 32px;
@@ -94,6 +87,22 @@ footer i{
     background-color: crimson;
     cursor: pointer;
     text-decoration: none;
+}
+
+.modal div{
+    margin: 20% auto;
+    background-color: #e4e4e4;
+    border: 2px solid #ffffff;
+}
+
+/* Rules */
+#rules-content{
+
+}
+
+/* Settings */
+#settings-content {
+
 }
 
 /* Game page */

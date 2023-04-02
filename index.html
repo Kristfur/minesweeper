@@ -29,21 +29,28 @@
             <button id="btn-settings-h" data-type="settings">Settings</button>
             <button id="btn-leaderboard-h" data-type="leaderboard">Leaderboard</button>
         </div>
+        <div id="rules-modal" class="modal">
+            <div id="rules-content">
+                <span class="close">&times</span>
+                <p>These are the rules</p>
+                <p>This is how you play</p>
+            </div>
+        </div>
         <div id="settings-modal" class="modal">
             <div id="settings-content">
-                <span class="close"> x </span>
+                <span class="close">&times</span>
                 <h1>Settings</h1>
                 <h2>Grid Size</h2>
                 <select id="sel-grid-size" name="grid-size">
                     <option value="3">3x3</option>
-                    <option value="5">5x5</option>
+                    <option value="5" selected>5x5</option>
                     <option value="8">8x8</option>
                     <option value="10">10x10</option>
                 </select>
                 <h2>Mines</h2>
                 <select id="sel-mine-count" name="mine-count">
                     <option value="20">Few</option>
-                    <option value="30">Normal</option>
+                    <option value="30" selected>Normal</option>
                     <option value="40">Many</option>
                 </select>
             </div>

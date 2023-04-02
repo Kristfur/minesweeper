@@ -162,7 +162,7 @@ function displayBoard(){
 }
 
 function displayRules(){
-
+    document.getElementById('rules-modal').style.display = 'block';
 }
 
 function displaySettings(){
