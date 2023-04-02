@@ -86,6 +86,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></span>`;   
+
+                if (classes[1] == 9){loseGame(); timerOn = true;} 
             }
         }
         longPress = false;
@@ -102,7 +104,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 this.innerHTML += `<span class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2][1]}; grid-row:${classes[3][1]}; 
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
-                background-size: contain;"></span>`;   
+                background-size: contain;"></span>`;
+
+                if (classes[1] == 9){loseGame(); timerOn = true;} 
             }
         }
         longPress = false;
@@ -327,15 +331,26 @@ function buildBoardTiles(board){
     }
 }
 
+let timerTick = null;
 function startTimer(){
+
     let startTime = new Date().getTime();
     let timeView = document.getElementById('timer');
 
-    let timerTick = setInterval(function() {
+    timerTick = setInterval(function() {
         let timeElapsed = new Date().getTime() - startTime;
         var minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
         timeView.innerHTML = `Time: ${minutes < 10 ? 0 : ""}${minutes}
-                                  : ${seconds < 10 ? 0 : ""}${seconds}`;
+            : ${seconds < 10 ? 0 : ""}${seconds}`;
+        timeView.classList = `${timeElapsed}`;
     }, 1000);
+}
+
+function loseGame(){
+    clearInterval(timerTick);
+}
+
+function winGame(){
+    clearInterval(timerTick);
 }
