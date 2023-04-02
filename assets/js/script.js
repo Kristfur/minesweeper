@@ -1,12 +1,20 @@
 // Event listeners
 document.addEventListener("DOMContentLoaded", function(){
+    let container = document.getElementById('game-board');
+    let pressTime = null;
+    let longPress = false;
+    let eventTargetDown;
+    let timerOn = false;
+    let minesMarked = 0;
+
     let buttons = document.getElementsByTagName("button");
 
     for (let button of buttons){
         button.addEventListener("click", function(){
             if (this.getAttribute("data-type") === "start"){
                 displayBoard();
-            } else if (this.getAttribute("data-type") === "reset"){
+            } else if (this.getAttribute("data-type") === "reset"){               
+                 minesMarked = 0;
                 generateBoard(); //*******
             } else if (this.getAttribute("data-type") === "rules"){
                 displayRules();
@@ -39,12 +47,6 @@ document.addEventListener("DOMContentLoaded", function(){
     //Use mousedown, mouseup and a timer to see if user did a short or long click
     //Short click reveals tile
     //Long click flaggs or unflaggs tile
-    let container = document.getElementById('game-board');
-    let pressTime = null;
-    let longPress = false;
-    let eventTargetDown;
-    let timerOn = false;
-    let minesMarked = 0;
     container.addEventListener("mousedown", function(event){
         eventTargetDown = event.target;
         longPress = false;
@@ -349,6 +351,8 @@ function buildBoardTiles(board){
     gameArea.style.gridTemplateColumns = "";
     gameArea.style.gridTemplateRows = "";
     gameArea.innerHTML = "";
+    document.getElementById('mines-left').innerHTML = "Mines Remaining: 0";
+    document.getElementById('timer').innerHTML = "Time: 00:00";
 
     for (let t = 0; t < gridSize; t++){
         gameArea.style.gridTemplateColumns += `${tileLength}% `;
@@ -388,7 +392,7 @@ function startTimer(){
 function checkMines(minesMarked){
     let gridSize = document.getElementById('sel-grid-size').value;
     let minesCount = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count').value / 100);
-    document.getElementById('mines-left').innerHTML = `Mines remaining: ${minesCount - minesMarked}`;
+    document.getElementById('mines-left').innerHTML = `Mines Remaining: ${minesCount - minesMarked}`;
     if (minesMarked == minesCount){
         //Final check to see if all flags are on mines
         let flagged = document.getElementsByClassName('flagged-tile');
