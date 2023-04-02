@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let pressTime = null;
     let longPress = false;
     let eventTargetDown;
+    let timerOn = false;
     container.addEventListener("mousedown", function(event){
         eventTargetDown = event.target;
         longPress = false;
@@ -88,6 +89,8 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         }
         longPress = false;
+
+        if (!timerOn) {startTimer(); timerOn = true;}
     });
     //Mobile devices
     container.addEventListener("touchend", function(event){
@@ -103,6 +106,8 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         }
         longPress = false;
+
+        if (!timerOn) {startTimer(); timerOn = true;}
     });
 });
 
@@ -320,4 +325,17 @@ function buildBoardTiles(board){
             style="grid-column:${y + 1}; grid-row:${x + 1};"></span>`
         }
     }
+}
+
+function startTimer(){
+    let startTime = new Date().getTime();
+    let timeView = document.getElementById('timer');
+
+    let timerTick = setInterval(function() {
+        let timeElapsed = new Date().getTime() - startTime;
+        var minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+        timeView.innerHTML = `Time: ${minutes < 10 ? 0 : ""}${minutes}
+                                  : ${seconds < 10 ? 0 : ""}${seconds}`;
+    }, 1000);
 }
