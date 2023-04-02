@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let longPress = false;
     let eventTargetDown;
     let timerOn = false;
+    let minesMarked = 0;
     container.addEventListener("mousedown", function(event){
         eventTargetDown = event.target;
         longPress = false;
@@ -56,14 +57,18 @@ document.addEventListener("DOMContentLoaded", function(){
                 document.getElementById('game-board').innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background: url('assets/images/flag.png') no-repeat center center;
-                background-size: contain; background-color: #bbbbbb;"></span>`;   
+                background-size: contain; background-color: #bbbbbb;"></span>`;  
+                minesMarked++; 
             } else if(event.target.classList.contains('flagged-tile')){
                 let classes = event.target.classList;
                 event.target.remove();
                 document.getElementById('game-board').innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}";</span>`;   
+                minesMarked--;
             }
         }, 500);
+
+        checkMines(minesMarked);
     });
     //Touchscreen devices
     container.addEventListener("touchstart", function(event){
@@ -80,14 +85,17 @@ document.addEventListener("DOMContentLoaded", function(){
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background: url('assets/images/flag.png') no-repeat center center;
                 background-size: contain; background-color: #bbbbbb;"></span>`;   
+                minesMarked++;
             } else if(event.target.classList.contains('flagged-tile')){
                 let classes = event.target.classList;
                 event.target.remove();
                 document.getElementById('game-board').innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}";</span>`;   
+                minesMarked--;
             }
         }, 350);
         
+        checkMines(minesMarked);
     });
 
     container.addEventListener("mouseup", function(event){
@@ -107,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function(){
         longPress = false;
 
         if (!timerOn) {startTimer(); timerOn = true;}
+        checkMines(minesMarked);
     });
     //Mobile devices
     container.addEventListener("touchend", function(event){
@@ -126,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function(){
         longPress = false;
 
         if (!timerOn) {startTimer(); timerOn = true;}
+        checkMines(minesMarked);
     });
 });
 
@@ -197,7 +207,6 @@ function generateBoard(){
     //Randomly populate board with a set number mines
     //   *Mines are represented by the number 9
     let totalMines = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count').value / 100);   
-    console.log(totalMines);
     let mineCount = 0;
     while(mineCount < totalMines){
         let mineX = Math.floor(Math.random() * gridSize);
@@ -364,6 +373,7 @@ function startTimer(){
 
     let startTime = new Date().getTime();
     let timeView = document.getElementById('timer');
+    checkMines(0);
 
     timerTick = setInterval(function() {
         let timeElapsed = new Date().getTime() - startTime;
@@ -375,10 +385,29 @@ function startTimer(){
     }, 1000);
 }
 
+function checkMines(minesMarked){
+    let gridSize = document.getElementById('sel-grid-size').value;
+    let minesCount = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count').value / 100);
+    document.getElementById('mines-left').innerHTML = `Mines remaining: ${minesCount - minesMarked}`;
+    if (minesMarked == minesCount){
+        //Final check to see if all flags are on mines
+        let flagged = document.getElementsByClassName('flagged-tile');
+        let isMine = true;
+        for (let f = 0; f < flagged.length; f++){
+            console.log(flagged[f].classList[1]);
+            if(flagged[f].classList[1] !== '9'){isMine = false;} 
+        }
+
+        if (isMine){winGame();}
+    }
+}
+
 function loseGame(){
+    console.log('lose');
     clearInterval(timerTick);
 }
 
 function winGame(){
+    console.log('win');
     clearInterval(timerTick);
 }
