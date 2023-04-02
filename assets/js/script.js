@@ -14,12 +14,17 @@ document.addEventListener("DOMContentLoaded", function(){
             if (this.getAttribute("data-type") === "start"){
                 displayBoard();
             } else if (this.getAttribute("data-type") === "reset"){               
-                 minesMarked = 0;
+                minesMarked = 0;
+                timerOn = false;
                 generateBoard(); //*******
             } else if (this.getAttribute("data-type") === "rules"){
                 displayRules();
             } else if (this.getAttribute("data-type") === "settings"){
                 displaySettings();
+            } else if (this.getAttribute("data-type") === "save"){
+                checkInput();
+            } else if (this.getAttribute("data-type") === "do-not-save"){
+                doNotSave();
             } else if (this.getAttribute("data-type") === "leaderboard"){
                 displayLeaderboard();
             } else {
@@ -379,6 +384,7 @@ function startTimer(){
 
     let startTime = new Date().getTime();
     let timeView = document.getElementById('timer');
+    timeView.classList = `${startTime}`;
     checkMines(0);
 
     timerTick = setInterval(function() {
@@ -387,7 +393,6 @@ function startTimer(){
         var seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
         timeView.innerHTML = `Time: ${minutes < 10 ? 0 : ""}${minutes}
             : ${seconds < 10 ? 0 : ""}${seconds}`;
-        timeView.classList = `${timeElapsed}`;
     }, 1000);
 }
 
@@ -417,25 +422,106 @@ function loseGame(){
 }
 
 function winGame(){
-    console.log('win');
+    let winTime = new Date().getTime() - document.getElementById('timer').classList[0];
     clearInterval(timerTick);
+
+    let pages = document.getElementsByClassName("page");
+
+    for (let page of pages){
+        page.style.display = 'none';
+    }
+
+    let minutes = Math.floor((winTime % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((winTime % (1000 * 60)) / 1000);
+    let milliseconds = Math.floor((winTime % 1000));
+    document.getElementById('time').innerHTML = `Time: ${minutes < 10 ? 0 : ""}${minutes}
+        : ${seconds < 10 ? 0 : ""}${seconds}
+        . ${milliseconds < 100 ? 0 : ""}${milliseconds % 100 < 10 ? 0 : ""}${milliseconds}`;
+    document.getElementById('time').classList = `${winTime}`;
+
+    document.getElementById('win-page').style.display = 'block';
+}
+
+function checkInput(){
+    let input = document.getElementById('name').value;
+
+    if (input == ''){alert('Name cannot be blank');}
+    else if (input.indexOf(' ') >= 0){alert('Name cannot have a space');}
+    else {saveScore();}
+}
+
+function saveScore(){
+    //Check if new score is a high score
+    let newScoreM = parseInt(document.getElementById('time').classList[0]);
+    let gridSize = document.getElementById('sel-grid-size').value;
+    let totalMines = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count').value / 100);  
+
+    let scores = [];
+    for (let s = 0; s < 10; s++) {
+        try {
+            scores.push(localStorage.getItem(`best-score-${s}-${gridSize}-${totalMines}`).split(' '));
+        } catch{
+            scores.push(['...', Infinity]);
+        }
+    }
+
+    for (let s = 0; s < scores.length; s++) {
+        if (scores[s][1] == '...'){scores[s][1] = Infinity;}
+        if (scores[s][1] >= newScoreM){
+            scores.splice(s, 0, [document.getElementById('name').value, newScoreM]);
+            break;
+        }
+    }
+
+    if (scores.length > 10) {scores.pop();}
+
+    for (let s = 0; s < 10; s++) {
+        if (scores[s][1] == Infinity){scores[s][1] = '...';}
+
+        localStorage.setItem(`best-score-${s}-${gridSize}-${totalMines}`, `${scores[s][0]} ${scores[s][1]}`);
+    }
+
+    displayLeaderboard();
+}
+
+function doNotSave(){
+    if (confirm("Are you sure? Your time will NOT be saved.")) {
+        displayHome();
+    }
 }
 
 function populateLeaderboard(){
     let leaderboardView = document.getElementById('leaderboard-content');
     let score;
+    let timeT;
+    let gridSize = document.getElementById('sel-grid-size').value;
+    let totalMines = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count').value / 100);  
 
-    leaderboardView.innerHTML = `<span class="score-name">Name</span>
+    leaderboardView.innerHTML = `<span class="score-grid">${gridSize}</span>
+        <span class="score-mineCount">${totalMines}</span>
+        <span class="score-name">Name</span>
         <span class="score-time">Time</span>`;
     for (let s = 0; s < 10; s++) {
         try {
-            score = localStorage.getItem(`best-score-${s}`).split(' ');
+            score = localStorage.getItem(`best-score-${s}-${gridSize}-${totalMines}`).split(' ');
+            console.log(score);
+            timeT = ['...'];
+
+            if (score[1] !== '...'){
+                let minutes = Math.floor((score[1] % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((score[1] % (1000 * 60)) / 1000);
+                let milliseconds = Math.floor((score[1] % 1000));
+                timeT = `${minutes < 10 ? 0 : ""}${minutes}
+                : ${seconds < 10 ? 0 : ""}${seconds}
+                . ${milliseconds < 100 ? 0 : ""}${milliseconds % 100 < 10 ? 0 : ""}${milliseconds}`;
+            }
         } catch {
             score = ['...','...'];
+            timeT = ['...'];
         }
 
         leaderboardView.innerHTML += `<span class="score-name">${score[0]}</span>
-            <span class="score-time">${score[1]}</span>`;
+            <span class="score-time">${timeT}</span>`;
     }
 }
 
