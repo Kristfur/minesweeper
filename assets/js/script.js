@@ -394,11 +394,14 @@ function checkMines(minesMarked){
         let flagged = document.getElementsByClassName('flagged-tile');
         let isMine = true;
         for (let f = 0; f < flagged.length; f++){
-            console.log(flagged[f].classList[1]);
             if(flagged[f].classList[1] !== '9'){isMine = false;} 
         }
 
         if (isMine){winGame();}
+    } else if (document.getElementsByClassName('hidden-tile').length + 
+        document.getElementsByClassName('flagged-tile').length == minesCount){
+        //Check to see if all marked and unmarked tiles remaining are mines
+        winGame();
     }
 }
 
