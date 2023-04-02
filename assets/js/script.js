@@ -187,6 +187,8 @@ function displayLeaderboard(){
         page.style.display = 'none';
     }
 
+    populateLeaderboard();
+
     document.getElementById('leaderboard-page').style.display = 'block';
 }
 
@@ -418,3 +420,24 @@ function winGame(){
     console.log('win');
     clearInterval(timerTick);
 }
+
+function populateLeaderboard(){
+    let leaderboardView = document.getElementById('leaderboard-content');
+    let score;
+
+    leaderboardView.innerHTML = `<span class="score-name">Name</span>
+        <span class="score-time">Time</span>`;
+    for (let s = 0; s < 10; s++) {
+        try {
+            score = localStorage.getItem(`best-score-${s}`).split(' ');
+        } catch {
+            score = ['...','...'];
+        }
+
+        leaderboardView.innerHTML += `<span class="score-name">${score[0]}</span>
+            <span class="score-time">${score[1]}</span>`;
+    }
+}
+
+
+//Save leaderboard score, no spaces
