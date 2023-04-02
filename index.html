@@ -26,7 +26,26 @@
                 <i class="fa-solid fa-bomb"></i>
             </button>
             <button id="btn-rules-h" data-type="rules">Rules</button>
+            <button id="btn-settings-h" data-type="settings">Settings</button>
             <button id="btn-leaderboard-h" data-type="leaderboard">Leaderboard</button>
+        </div>
+        <div id="settings-modal" class="modal">
+            <div id="settings-content">
+                <span class="close"> x </span>
+                <h1>Settings</h1>
+                <h2>Grid Size</h2>
+                <select id="sel-gridsize" name="grid-size">
+                    <option value="5">5x5</option>
+                    <option value="8">8x8</option>
+                    <option value="10">10x10</option>
+                </select>
+                <h2>Mines</h2>
+                <select id="sel-minecount" name="mine-count">
+                    <option value="1">Few</option>
+                    <option value="2">Normal</option>
+                    <option value="3">Many</option>
+                </select>
+            </div>
         </div>
         <div class="page" id="game-page">
             <span id="mines-left">mines left</span>

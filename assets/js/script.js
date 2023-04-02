@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 generateBoard(); //*******
             } else if (this.getAttribute("data-type") === "rules"){
                 displayRules();
+            } else if (this.getAttribute("data-type") === "settings"){
+                displaySettings();
             } else if (this.getAttribute("data-type") === "leaderboard"){
                 displayLeaderboard();
             } else {
@@ -20,6 +22,18 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     document.getElementById('logo').addEventListener("click", displayHome);
+
+    //Add event listeners for 'x' in modals
+    let closes = document.getElementsByClassName('close');
+    for (let close of closes){
+        close.addEventListener('click', function(){
+            //Close all modals
+            let modals = document.getElementsByClassName('modal');
+            for (let modal of modals){
+                modal.style.display = 'none';
+            }
+        });
+    }
     
     //Add event listeners to game tiles dynamically
     //Use mousedown, mouseup and a timer to see if user did a short or long click
@@ -139,6 +153,19 @@ function displayBoard(){
 
 function displayRules(){
 
+}
+
+function displaySettings(){
+    document.getElementById('settings-modal').style.display = 'block';
+}
+
+window.onclick = function(event){
+    let modals = document.getElementsByClassName('modal');
+    for (let modal of modals){
+        if (event.target == modal) {
+            modal.style.display = "none";
+      }
+    }
 }
 
 function displayLeaderboard(){
