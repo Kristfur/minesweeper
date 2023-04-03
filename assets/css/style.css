@@ -109,7 +109,8 @@ footer i{
 #leaderboard-content {
     padding: 16px 15%;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 20% 40% 40%;
+    font-size: small;
 }
 
 #leaderboard-select{
@@ -120,6 +121,11 @@ footer i{
 #leaderboard-select label, select {
     height: 32px;
     margin: 0;
+}
+
+.new-score {
+    font-weight: bold;
+    color: blueviolet;
 }
 
 /* Game page */

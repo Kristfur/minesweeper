@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 doNotSave();
             } else if (this.getAttribute("data-type") === "leaderboard"){
                 playSound('click');  
-                displayLeaderboard();
+                displayLeaderboard("");
             } else if (this.getAttribute("data-type") === "home"){
                 playSound('click');  
                 displayHome();
@@ -75,10 +75,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
     //Add event listener for selectors in leaderboard
     document.getElementById('sel-grid-size-l').addEventListener("change", function(){
-        populateLeaderboard();
+        populateLeaderboard("");
     });
     document.getElementById('sel-mine-count-l').addEventListener("change", function(){
-        populateLeaderboard();
+        populateLeaderboard("");
     });
     
     //Add event listeners to game tiles dynamically
@@ -238,7 +238,7 @@ function displaySettings(){
 }
 
 /** Display leaderboard page and hide other pages */
-function displayLeaderboard(){
+function displayLeaderboard(currentScore){
     let pages = document.getElementsByClassName("page");
 
     for (let page of pages){
@@ -250,7 +250,7 @@ function displayLeaderboard(){
 
     console.log(document.getElementById('sel-mine-count').innerHTML);
 
-    populateLeaderboard();
+    populateLeaderboard(currentScore);
 
     document.getElementById('leaderboard-page').style.display = 'block';
 }
@@ -529,7 +529,7 @@ function checkInput(){
     else {saveScore();}
 }
 
-/** Saves name and score to local storage if they made top 10 times */
+/** Saves name and score to local storage if they made top 5 times */
 function saveScore(){
     //Check if new score is a high score
     let newScoreM = parseInt(document.getElementById('time').classList[0]);
@@ -537,7 +537,7 @@ function saveScore(){
     let totalMines = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count').value / 100);  
 
     let scores = [];
-    for (let s = 0; s < 10; s++) {
+    for (let s = 0; s < 5; s++) {
         try {
             scores.push(localStorage.getItem(`best-score-${s}-${gridSize}-${totalMines}`).split(' '));
         } catch{
@@ -553,15 +553,16 @@ function saveScore(){
         }
     }
 
-    if (scores.length > 10) {scores.pop();}
+    if (scores.length > 5) {scores.pop();}
 
-    for (let s = 0; s < 10; s++) {
+    for (let s = 0; s < 5; s++) {
         if (scores[s][1] == Infinity){scores[s][1] = '...';}
 
         localStorage.setItem(`best-score-${s}-${gridSize}-${totalMines}`, `${scores[s][0]} ${scores[s][1]}`);
     }
 
-    displayLeaderboard();
+    console.log(newScoreM);
+    displayLeaderboard(`${document.getElementById('name').value} ${newScoreM}`);
 }
 
 /** Warns user before exiting to home page */
@@ -572,21 +573,22 @@ function doNotSave(){
 }
 
 /** Gets data from local storage and populates leaderboard display */
-function populateLeaderboard(){
+function populateLeaderboard(currentScore){
     let leaderboardView = document.getElementById('leaderboard-content');
+    let isOneOfBest = false;
     let score;
     let timeT;
     let gridSize = document.getElementById('sel-grid-size-l').value;
     let totalMines = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count-l').value / 100);  
 
-    leaderboardView.innerHTML = `<span class="score-grid">${gridSize}</span>
-        <span class="score-mineCount">${totalMines}</span>
+    leaderboardView.innerHTML = `
+        <span class="score-rank">Rank</span>
         <span class="score-name">Name</span>
         <span class="score-time">Time</span>`;
-    for (let s = 0; s < 10; s++) {
+
+    for (let s = 0; s < 5; s++) {
         try {
             score = localStorage.getItem(`best-score-${s}-${gridSize}-${totalMines}`).split(' ');
-            console.log(score);
             timeT = ['...'];
 
             if (score[1] !== '...'){
@@ -602,8 +604,33 @@ function populateLeaderboard(){
             timeT = ['...'];
         }
 
-        leaderboardView.innerHTML += `<span class="score-name">${score[0]}</span>
+        console.log(score, currentScore.split(' ')[1])
+        if (score[1] == parseInt(currentScore.split(' ')[1])){
+            isOneOfBest = true;
+            leaderboardView.innerHTML += `
+                <span class="score-rank new-score">${s + 1}</span>
+                <span class="score-name new-score">${score[0]}</span>
+                <span class="score-time new-score">${timeT}</span>`;
+        } else {
+            leaderboardView.innerHTML += `
+            <span class="score-rank">${s + 1}</span>
+            <span class="score-name">${score[0]}</span>
             <span class="score-time">${timeT}</span>`;
+        }
+    }
+
+    if(!isOneOfBest && currentScore !== ""){
+        let minutes = Math.floor((currentScore.split(' ')[1] % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((currentScore.split(' ')[1] % (1000 * 60)) / 1000);
+        let milliseconds = Math.floor((currentScore.split(' ')[1] % 1000));
+        timeT = `${minutes < 10 ? 0 : ""}${minutes}
+            : ${seconds < 10 ? 0 : ""}${seconds}
+            . ${milliseconds < 100 ? 0 : ""}${milliseconds % 100 < 10 ? 0 : ""}${milliseconds}`;
+
+        leaderboardView.innerHTML += `
+        <span class="score-rank new-score"></span>
+        <span class="score-name new-score">${currentScore.split(' ')[0]}</span>
+        <span class="score-time new-score">${timeT}</span>`;
     }
 }
 
