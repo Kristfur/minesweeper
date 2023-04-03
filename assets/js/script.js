@@ -13,12 +13,16 @@ document.addEventListener("DOMContentLoaded", function(){
         button.addEventListener("click", function(){
             if (this.getAttribute("data-type") === "start"){
                 menuClickSound();
+                minesMarked = 0;
+                timerOn = false;
+                clearInterval(timerTick);
                 displayBoard();
             } else if (this.getAttribute("data-type") === "reset"){  
                 menuClickSound();             
                 minesMarked = 0;
                 timerOn = false;
-                generateBoard(); //*******
+                clearInterval(timerTick);
+                generateBoard(); 
             } else if (this.getAttribute("data-type") === "rules"){
                 menuClickSound();
                 displayRules();
@@ -42,7 +46,13 @@ document.addEventListener("DOMContentLoaded", function(){
         })
     }
 
-    document.getElementById('logo').addEventListener("click", displayHome);
+    document.getElementById('logo').addEventListener("click", function(){
+        menuClickSound();
+        minesMarked = 0;
+        timerOn = false;
+        clearInterval(timerTick);
+        displayHome();
+    });
 
     //Add event listeners for 'x' in modals
     let closes = document.getElementsByClassName('close');
