@@ -9,45 +9,47 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let buttons = document.getElementsByTagName("button");
 
+    // Add event listeners to all buttons
     for (let button of buttons){
         button.addEventListener("click", function(){
             if (this.getAttribute("data-type") === "start"){
-                menuClickSound();
+                playSound('click');
                 minesMarked = 0;
                 timerOn = false;
                 clearInterval(timerTick);
                 displayBoard();
             } else if (this.getAttribute("data-type") === "reset"){  
-                menuClickSound();             
+                playSound('click');             
                 minesMarked = 0;
                 timerOn = false;
                 clearInterval(timerTick);
                 generateBoard(); 
             } else if (this.getAttribute("data-type") === "rules"){
-                menuClickSound();
+                playSound('click');  
                 displayRules();
             } else if (this.getAttribute("data-type") === "settings"){
-                menuClickSound();
+                playSound('click');  
                 displaySettings();
             } else if (this.getAttribute("data-type") === "save"){
-                menuClickSound();
+                playSound('click');  
                 checkInput();
             } else if (this.getAttribute("data-type") === "do-not-save"){
-                menuClickSound();
+                playSound('click');  
                 doNotSave();
             } else if (this.getAttribute("data-type") === "leaderboard"){
-                menuClickSound();
+                playSound('click');  
                 displayLeaderboard();
             } else {
                 // If button is not recognised, default action is displayHome
-                menuClickSound();
+                playSound('click');  
                 displayHome();
             }
         })
     }
 
+    // Add event listener to logo
     document.getElementById('logo').addEventListener("click", function(){
-        menuClickSound();
+        playSound('click');  
         minesMarked = 0;
         timerOn = false;
         clearInterval(timerTick);
@@ -59,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function(){
     for (let close of closes){
         close.addEventListener('click', function(){
             //Close all modals
-            menuClickSound();
+            playSound('click');  
             let modals = document.getElementsByClassName('modal');
             for (let modal of modals){
                 modal.style.display = 'none';
@@ -79,13 +81,16 @@ document.addEventListener("DOMContentLoaded", function(){
     //Use mousedown, mouseup and a timer to see if user did a short or long click
     //Short click reveals tile
     //Long click flaggs or unflaggs tile
+    //*Flagged tiles cannot be revealed unless unflagged first*
     container.addEventListener("mousedown", function(event){
         eventTargetDown = event.target;
         longPress = false;
         pressTime = null;
-        pressTime = setTimeout(function() {    
+        pressTime = setTimeout(function() {
+            //Set timeout for long click    
             longPress = true;        
             if(event.target.classList.contains('hidden-tile')){
+                //If tile is hidden, then flag it
                 let classes = event.target.classList;
                 event.target.remove();
                 document.getElementById('game-board').innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
@@ -94,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 background-size: contain; background-color: #bbbbbb;"></span>`;  
                 minesMarked++; 
             } else if(event.target.classList.contains('flagged-tile')){
+                //If tile is flagged, then unflag it
                 let classes = event.target.classList;
                 event.target.remove();
                 document.getElementById('game-board').innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
@@ -101,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 minesMarked--;
             }
 
-            flagTileSound();
+            playSound('flag');  
         }, 350);
 
         checkMines(minesMarked);
@@ -112,9 +118,11 @@ document.addEventListener("DOMContentLoaded", function(){
         eventTargetDown = event.target;
         longPress = false;
         pressTime = null;
-        pressTime = setTimeout(function() {            
+        pressTime = setTimeout(function() {   
+            //Set timeout for long touch             
             longPress = true;
             if(event.target.classList.contains('hidden-tile')){
+                //If tile is hidden, then flag it
                 let classes = event.target.classList;
                 event.target.remove();
                 document.getElementById('game-board').innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
@@ -123,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 background-size: contain; background-color: #bbbbbb;"></span>`;   
                 minesMarked++;
             } else if(event.target.classList.contains('flagged-tile')){
+                //If tile is flagged, then unflag it
                 let classes = event.target.classList;
                 event.target.remove();
                 document.getElementById('game-board').innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
@@ -130,15 +139,17 @@ document.addEventListener("DOMContentLoaded", function(){
                 minesMarked--;
             }
 
-            flagTileSound();
+            playSound('flag');  
         }, 350);
         
         checkMines(minesMarked);
     });
 
     container.addEventListener("mouseup", function(event){
+        //On mouseup clear timeout for long click
         clearTimeout(pressTime);
         if (eventTargetDown === event.target){
+            //If long click did not happen yet, then do short click
             if(event.target.classList.contains('hidden-tile') && !longPress){
                 let classes = event.target.classList;
                 event.target.remove();
@@ -147,22 +158,24 @@ document.addEventListener("DOMContentLoaded", function(){
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></span>`;    
                 
-                tileRevealSound(); 
+                playSound('reveal');  
 
+                //If a mine(9) is revealed, then lose game
                 if (classes[1] == 9){loseGame(); timerOn = true;} 
             }
         }
         longPress = false;
 
-
-
         if (!timerOn) {startTimer(); timerOn = true;}
+        //Check for win
         checkMines(minesMarked);
     });
-    //Mobile devices
+    //Touchscreen devices
     container.addEventListener("touchend", function(event){
+        //On touchup clear timeout for long touch
         clearTimeout(pressTime);
         if (eventTargetDown === event.target){
+            //If long touch did not happen yet, then do short touch
             if(event.target.classList.contains('hidden-tile') && !longPress){
                 let classes = event.target.classList;
                 event.target.remove();
@@ -171,18 +184,21 @@ document.addEventListener("DOMContentLoaded", function(){
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></span>`;
                 
-                tileRevealSound();
+                playSound('reveal');  
 
+                //If a mine(9) is revealed, then lose game
                 if (classes[1] == 9){loseGame(); timerOn = true;} 
             }
         }
         longPress = false;
 
         if (!timerOn) {startTimer(); timerOn = true;}
+        //Check for win
         checkMines(minesMarked);
     });
 });
 
+/** Display home page and hide other pages */
 function displayHome(){
     let pages = document.getElementsByClassName("page");
 
@@ -193,6 +209,7 @@ function displayHome(){
     document.getElementById('home-page').style.display = 'block';
 }
 
+/** Display game page and hide other pages */
 function displayBoard(){
     let pages = document.getElementsByClassName("page");
 
@@ -205,23 +222,17 @@ function displayBoard(){
     document.getElementById('game-page').style.display = 'block';
 }
 
+/** Display rules page and hide other pages */
 function displayRules(){
     document.getElementById('rules-modal').style.display = 'block';
 }
 
+/** Display settings page and hide other pages */
 function displaySettings(){
     document.getElementById('settings-modal').style.display = 'block';
 }
 
-window.onclick = function(event){
-    let modals = document.getElementsByClassName('modal');
-    for (let modal of modals){
-        if (event.target == modal) {
-            modal.style.display = "none";
-      }
-    }
-}
-
+/** Display leaderboard page and hide other pages */
 function displayLeaderboard(){
     let pages = document.getElementsByClassName("page");
 
@@ -237,6 +248,16 @@ function displayLeaderboard(){
     populateLeaderboard();
 
     document.getElementById('leaderboard-page').style.display = 'block';
+}
+
+// Closes modal if useer clicks on the outside
+window.onclick = function(event){
+    let modals = document.getElementsByClassName('modal');
+    for (let modal of modals){
+        if (event.target == modal) {
+            modal.style.display = "none";
+      }
+    }
 }
 
 /**
@@ -422,6 +443,7 @@ function buildBoardTiles(board){
 }
 
 let timerTick = null;
+/** Timer for users score in game */
 function startTimer(){
 
     let startTime = new Date().getTime();
@@ -438,6 +460,10 @@ function startTimer(){
     }, 1000);
 }
 
+/** 
+ * Calculates how many mines are remaining based on the number of flags placed.
+ * Calls winGame() if all remaining hidden tiles are mines
+ */
 function checkMines(minesMarked){
     let gridSize = document.getElementById('sel-grid-size').value;
     let minesCount = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count').value / 100);
@@ -458,16 +484,17 @@ function checkMines(minesMarked){
     }
 }
 
+/** Ends current game and prompts user to play again */
 function loseGame(){
-    explosionSound();
+    playSound('explosion');  
 
     console.log('lose');
     clearInterval(timerTick);
 }
 
+/** Ends current game and displays users winning time */
 function winGame(){
-    winSound();
-
+    playSound('win');
     let winTime = new Date().getTime() - document.getElementById('timer').classList[0];
     clearInterval(timerTick);
 
@@ -488,6 +515,7 @@ function winGame(){
     document.getElementById('win-page').style.display = 'block';
 }
 
+/** Checks if user input is valid */
 function checkInput(){
     let input = document.getElementById('name').value;
 
@@ -496,6 +524,7 @@ function checkInput(){
     else {saveScore();}
 }
 
+/** Saves name and score to local storage if they made top 10 times */
 function saveScore(){
     //Check if new score is a high score
     let newScoreM = parseInt(document.getElementById('time').classList[0]);
@@ -530,12 +559,14 @@ function saveScore(){
     displayLeaderboard();
 }
 
+/** Warns user before exiting to home page */
 function doNotSave(){
     if (confirm("Are you sure? Your time will NOT be saved.")) {
         displayHome();
     }
 }
 
+/** Gets data from local storage and populates leaderboard display */
 function populateLeaderboard(){
     let leaderboardView = document.getElementById('leaderboard-content');
     let score;
@@ -589,32 +620,15 @@ function sound(src) {
     }
 } 
 
-function menuClickSound(){
+/** Plays sound if sound enabled
+ * @param {*string} sound
+ */
+function playSound(desiredSound){
     if (document.getElementById('sound').checked){
-        new sound("assets/sounds/menu-click.mp3").play();
-    }
-}
-
-function tileRevealSound(){
-    if (document.getElementById('sound').checked){
-        new sound("assets/sounds/tile-reveal.mp3").play();
-    }
-}
-
-function flagTileSound(){
-    if (document.getElementById('sound').checked){
-        new sound("assets/sounds/flag-tile.mp3").play();
-    }
-}
-
-function explosionSound(){
-    if (document.getElementById('sound').checked){
-        new sound("assets/sounds/explosion.mp3").play();
-    }
-}
-
-function winSound(){
-    if (document.getElementById('sound').checked){
-        new sound("assets/sounds/win.mp3").play();
+        if (desiredSound == 'click'){new sound("assets/sounds/menu-click.mp3").play();}
+        else if (desiredSound == 'reveal'){new sound("assets/sounds/tile-reveal.mp3").play();}
+        else if (desiredSound == 'flag'){new sound("assets/sounds/flag-tile.mp3").play();}
+        else if (desiredSound == 'explosion'){new sound("assets/sounds/explosion.mp3").play();}
+        else if (desiredSound == 'win'){new sound("assets/sounds/win.mp3").play();}
     }
 }

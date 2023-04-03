@@ -117,7 +117,7 @@ footer i{
     grid-template-columns: 50% 50%;
 }
 
-#leaderboard-select h3, select {
+#leaderboard-select label, select {
     height: 32px;
     margin: 0;
 }

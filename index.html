@@ -9,6 +9,7 @@
     <meta name="description" content="Minesweeper">
     <meta name="keywords" content="minesweeper, games, classic games">
 
+    <!-- Link to css -->
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Minesweeper</title>
 
@@ -19,10 +20,12 @@
     <link rel="manifest" href="assets/favicon/site.webmanifest">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <img src="assets/images/minesweeper-logo.png" alt="MINESWEEPER" id="logo">
     </header>
     <main>
+        <!-- Home page -->
         <div class="page" id="home-page">
             <button id="btn-start-h" data-type="start">    
                 <span style="color:#006eff">P</span>
@@ -35,6 +38,7 @@
             <button id="btn-settings-h" data-type="settings">Settings</button>
             <button id="btn-leaderboard-h" data-type="leaderboard">Leaderboard</button>
         </div>
+        <!-- Rules page -->
         <div id="rules-modal" class="modal">
             <div id="rules-content">
                 <span class="close">&times</span>
@@ -42,18 +46,19 @@
                 <p>This is how you play</p>
             </div>
         </div>
+        <!-- Settings page -->
         <div id="settings-modal" class="modal">
             <div id="settings-content">
                 <span class="close">&times</span>
                 <h1>Settings</h1>
-                <h2>Grid Size</h2>
+                <label>Grid Size</label>
                 <select id="sel-grid-size" name="grid-size">
                     <option value="3">3x3</option>
                     <option value="5" selected>5x5</option>
                     <option value="8">8x8</option>
                     <option value="10">10x10</option>
                 </select>
-                <h2>Mines</h2>
+                <label>Mines</label>
                 <select id="sel-mine-count" name="mine-count">
                     <option value="20">Few</option>
                     <option value="30" selected>Normal </option>
@@ -63,6 +68,7 @@
                 <input id='sound' type="checkbox" name="sound" checked>
             </div>
         </div>
+        <!-- Game page -->
         <div class="page" id="game-page">
             <span id="mines-left">mines left</span>
             <span id="timer">time 00:00</span>
@@ -71,6 +77,7 @@
             <button id="btn-rules-g" data-type="rules">Rules</button>
             <button id="btn-leaderboard-g" data-type="leaderboard">Leaderboard</button>
         </div>
+        <!-- Win page -->
         <div class="page" id="win-page">
             <div id="win-content">
                 <span>You win!</span>
@@ -81,17 +88,18 @@
                 <button id="do-not-save" data-type="do-not-save">Nope</button>
             </div>
         </div>
+        <!-- Leaderboard page -->
         <div class="page" id="leaderboard-page">
             <h2>Leaderboard</h2>
             <div id="leaderboard-select">
-                <h3>Grid Size</h3>
+                <label>Grid Size</label>
                 <select id="sel-grid-size-l" name="grid-size-l">
                     <option value="3">3x3</option>
                     <option value="5">5x5</option>
                     <option value="8">8x8</option>
                     <option value="10">10x10</option>
                 </select>
-                <h3>Mines</h3>
+                <label>Mines</label>
                 <select id="sel-mine-count-l" name="mine-count-l">
                     <option value="20">Few</option>
                     <option value="30">Normal </option>
@@ -101,6 +109,7 @@
             <div id="leaderboard-content">No best times set</div>
         </div>
     </main>
+    <!-- Footer -->
     <footer>
         <a href="https://github.com/Kristfur" target="_blank" rel="noopener"
         aria-label="Follow me on GitHub (opens a new tab)">
@@ -111,6 +120,7 @@
     <!-- font awesome script-->
     <script src="https://kit.fontawesome.com/f1206bb3d9.js" crossorigin="anonymous"></script>
 
+    <!-- Link to js -->
     <script src="assets/js/script.js"></script>
 </body>
 </html>
