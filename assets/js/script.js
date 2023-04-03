@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 minesMarked = 0;
                 timerOn = false;
                 clearInterval(timerTick);
+                document.getElementById('lose-modal').style.display = 'none';
                 generateBoard(); 
             } else if (this.getAttribute("data-type") === "rules"){
                 playSound('click');  
@@ -39,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function(){
             } else if (this.getAttribute("data-type") === "leaderboard"){
                 playSound('click');  
                 displayLeaderboard();
+            } else if (this.getAttribute("data-type") === "home"){
+                playSound('click');  
+                displayHome();
             } else {
                 // If button is not recognised, default action is displayHome
                 playSound('click');  
@@ -202,6 +206,7 @@ document.addEventListener("DOMContentLoaded", function(){
 function displayHome(){
     let pages = document.getElementsByClassName("page");
 
+    document.getElementById('lose-modal').style.display = 'none';
     for (let page of pages){
         page.style.display = 'none';
     }
@@ -254,7 +259,7 @@ function displayLeaderboard(){
 window.onclick = function(event){
     let modals = document.getElementsByClassName('modal');
     for (let modal of modals){
-        if (event.target == modal) {
+        if (event.target == modal && modal !== document.getElementById('lose-modal')) {
             modal.style.display = "none";
       }
     }
@@ -487,9 +492,9 @@ function checkMines(minesMarked){
 /** Ends current game and prompts user to play again */
 function loseGame(){
     playSound('explosion');  
-
-    console.log('lose');
     clearInterval(timerTick);
+
+    document.getElementById('lose-modal').style.display = 'block';
 }
 
 /** Ends current game and displays users winning time */
