@@ -229,8 +229,10 @@ function displayLeaderboard(){
         page.style.display = 'none';
     }
 
-    document.getElementById('sel-grid-size-l').innerHTML = document.getElementById('sel-grid-size').innerHTML;
-    document.getElementById('sel-mine-count-l').innerHTML = document.getElementById('sel-mine-count').innerHTML;
+    document.getElementById('sel-grid-size-l').value = document.getElementById('sel-grid-size').value;
+    document.getElementById('sel-mine-count-l').value = document.getElementById('sel-mine-count').value;
+
+    console.log(document.getElementById('sel-mine-count').innerHTML);
 
     populateLeaderboard();
 
