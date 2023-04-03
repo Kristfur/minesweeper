@@ -82,7 +82,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}";</span>`;   
                 minesMarked--;
             }
-        }, 500);
+
+            flagTileSound();
+        }, 350);
 
         checkMines(minesMarked);
     });
@@ -109,6 +111,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}";</span>`;   
                 minesMarked--;
             }
+
+            flagTileSound();
         }, 350);
         
         checkMines(minesMarked);
@@ -123,12 +127,16 @@ document.addEventListener("DOMContentLoaded", function(){
                 this.innerHTML += `<span class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
-                background-size: contain;"></span>`;   
+                background-size: contain;"></span>`;    
+                
+                tileRevealSound(); 
 
                 if (classes[1] == 9){loseGame(); timerOn = true;} 
             }
         }
         longPress = false;
+
+
 
         if (!timerOn) {startTimer(); timerOn = true;}
         checkMines(minesMarked);
@@ -144,6 +152,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></span>`;
+                
+                tileRevealSound();
 
                 if (classes[1] == 9){loseGame(); timerOn = true;} 
             }
@@ -426,11 +436,15 @@ function checkMines(minesMarked){
 }
 
 function loseGame(){
+    explosionSound();
+
     console.log('lose');
     clearInterval(timerTick);
 }
 
 function winGame(){
+    winSound();
+
     let winTime = new Date().getTime() - document.getElementById('timer').classList[0];
     clearInterval(timerTick);
 
@@ -555,5 +569,29 @@ function sound(src) {
 function menuClickSound(){
     if (document.getElementById('sound').checked){
         new sound("assets/sounds/menu-click.mp3").play();
+    }
+}
+
+function tileRevealSound(){
+    if (document.getElementById('sound').checked){
+        new sound("assets/sounds/tile-reveal.mp3").play();
+    }
+}
+
+function flagTileSound(){
+    if (document.getElementById('sound').checked){
+        new sound("assets/sounds/flag-tile.mp3").play();
+    }
+}
+
+function explosionSound(){
+    if (document.getElementById('sound').checked){
+        new sound("assets/sounds/explosion.mp3").play();
+    }
+}
+
+function winSound(){
+    if (document.getElementById('sound').checked){
+        new sound("assets/sounds/win.mp3").play();
     }
 }
