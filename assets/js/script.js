@@ -66,6 +66,14 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         });
     }
+
+    //Add event listener for selectors in leaderboard
+    document.getElementById('sel-grid-size-l').addEventListener("change", function(){
+        populateLeaderboard();
+    });
+    document.getElementById('sel-mine-count-l').addEventListener("change", function(){
+        populateLeaderboard();
+    });
     
     //Add event listeners to game tiles dynamically
     //Use mousedown, mouseup and a timer to see if user did a short or long click
@@ -220,6 +228,9 @@ function displayLeaderboard(){
     for (let page of pages){
         page.style.display = 'none';
     }
+
+    document.getElementById('sel-grid-size-l').innerHTML = document.getElementById('sel-grid-size').innerHTML;
+    document.getElementById('sel-mine-count-l').innerHTML = document.getElementById('sel-mine-count').innerHTML;
 
     populateLeaderboard();
 
@@ -527,8 +538,8 @@ function populateLeaderboard(){
     let leaderboardView = document.getElementById('leaderboard-content');
     let score;
     let timeT;
-    let gridSize = document.getElementById('sel-grid-size').value;
-    let totalMines = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count').value / 100);  
+    let gridSize = document.getElementById('sel-grid-size-l').value;
+    let totalMines = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count-l').value / 100);  
 
     leaderboardView.innerHTML = `<span class="score-grid">${gridSize}</span>
         <span class="score-mineCount">${totalMines}</span>
