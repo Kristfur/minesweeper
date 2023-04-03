@@ -12,23 +12,31 @@ document.addEventListener("DOMContentLoaded", function(){
     for (let button of buttons){
         button.addEventListener("click", function(){
             if (this.getAttribute("data-type") === "start"){
+                menuClickSound();
                 displayBoard();
-            } else if (this.getAttribute("data-type") === "reset"){               
+            } else if (this.getAttribute("data-type") === "reset"){  
+                menuClickSound();             
                 minesMarked = 0;
                 timerOn = false;
                 generateBoard(); //*******
             } else if (this.getAttribute("data-type") === "rules"){
+                menuClickSound();
                 displayRules();
             } else if (this.getAttribute("data-type") === "settings"){
+                menuClickSound();
                 displaySettings();
             } else if (this.getAttribute("data-type") === "save"){
+                menuClickSound();
                 checkInput();
             } else if (this.getAttribute("data-type") === "do-not-save"){
+                menuClickSound();
                 doNotSave();
             } else if (this.getAttribute("data-type") === "leaderboard"){
+                menuClickSound();
                 displayLeaderboard();
             } else {
                 // If button is not recognised, default action is displayHome
+                menuClickSound();
                 displayHome();
             }
         })
@@ -41,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function(){
     for (let close of closes){
         close.addEventListener('click', function(){
             //Close all modals
+            menuClickSound();
             let modals = document.getElementsByClassName('modal');
             for (let modal of modals){
                 modal.style.display = 'none';
@@ -525,5 +534,26 @@ function populateLeaderboard(){
     }
 }
 
+// Sounds
+function sound(src) {
+    //Credit:
+    //https://www.w3schools.com/graphics/game_sound.asp
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
+} 
 
-//Save leaderboard score, no spaces
+function menuClickSound(){
+    if (document.getElementById('sound').checked){
+        new sound("assets/sounds/menu-click.mp3").play();
+    }
+}
