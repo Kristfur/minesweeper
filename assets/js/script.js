@@ -218,6 +218,11 @@ function displayHome(){
 function displayBoard(){
     let pages = document.getElementsByClassName("page");
 
+    preloadImage("../assets/images/flag.png");
+    for (let i = 1; i < 10; i++){
+        preloadImage(`../assets/images/number-${i}.png`)
+    }
+
     for (let page of pages){
         page.style.display = 'none';
     }
@@ -663,4 +668,10 @@ function playSound(desiredSound){
         else if (desiredSound == 'explosion'){new sound("assets/sounds/explosion.mp3").play();}
         else if (desiredSound == 'win'){new sound("assets/sounds/win.mp3").play();}
     }
+}
+
+/** Preload images */
+function preloadImage(im_url) {
+    let img = new Image();
+    img.src = im_url;
 }
