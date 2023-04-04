@@ -192,6 +192,9 @@ function processClick(event){
 
                 //If a mine(9) is revealed, then lose game
                 if (classes[1] == 9){loseGame(); timerOn = true;} 
+
+                //If a 0 tile was revealed, reveal all adjacent tiles
+                if (classes[1] == 0){revealAdjacentEmptys(event.target);} 
             }
         }
         longPress = false;
@@ -199,6 +202,39 @@ function processClick(event){
         if (!timerOn) {startTimer(); timerOn = true;}
         //Check for win
         checkMines(minesMarked);
+    }
+}
+
+/**
+ * Recieves a (0) tile and reveals all surrounding tiles
+ * @param {*tile}
+ */
+function revealAdjacentEmptys(tile){
+    let classes = tile.classList;
+    let allTiles = document.getElementById('game-board').children;
+    //Loop through all 8 adjacent tiles
+    for(let y = -1; y < 2; y++){
+        for(let x = -1; x < 2; x++){
+            if( x == y && x == 0){continue;}
+            else{
+                //If tile exsists, reveal it
+                let thisTile = document.getElementsByClassName(`x${parseInt(tile.classList[2].slice(1)) + x} y${parseInt(tile.classList[3].slice(1)) + y}`);
+                if(thisTile[0] != null){
+                    let newClasses = thisTile[0].classList;
+                    //Skip tile if it was already revealed
+                    if(newClasses[0] !== 'hidden-tile'){continue;}
+                    thisTile[0].remove();
+                    document.getElementById('game-board').innerHTML += `<span
+                    class="revealed-tile ${newClasses[1]} ${newClasses[2]} ${newClasses[3]}" 
+                    style="grid-column:${newClasses[2].slice(1)}; grid-row:${newClasses[3].slice(1)}; 
+                    background: url('assets/images/number-${newClasses[1]}.png') no-repeat center center;
+                    background-size: contain;"></span>`;   
+
+                    //If a 0 tile was revealed, reveal all adjacent tiles
+                    if (newClasses[1] == 0){revealAdjacentEmptys(thisTile[0]);} 
+                }               
+            }      
+        }
     }
 }
 
