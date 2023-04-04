@@ -104,14 +104,14 @@ let minesMarked = 0;
  * @param {*event} click event 
  */
 function processClick(event){
-    if(event.type == 'touchdown' || event.type == 'touchup'){event.preventDefault();}
+    if(event.type == 'touchstart' || event.type == 'touchend'){event.preventDefault();}
 
     //Use mousedown, mouseup and a timer to see if user did a short or long click
     //Short click reveals tile
     //Long click flaggs or unflaggs tile
     //*Flagged tiles cannot be revealed unless unflagged first*
     if(event.buttons >= 0){loseFocus();}
-    if (event.type == 'mousedown' || event.type == 'touchdown'){
+    if (event.type == 'mousedown' || event.type == 'touchstart'){
         eventTargetDown = event.target;
         longPress = false;
         pressTime = null;
@@ -173,7 +173,7 @@ function processClick(event){
 
         checkMines(minesMarked);
     } 
-    else if(event.type == 'mouseup'  || event.type == 'touchup'){
+    else if(event.type == 'mouseup'  || event.type == 'touchend'){
         //On mouseup clear timeout for long click
         clearTimeout(pressTime);
         if (eventTargetDown === event.target){
