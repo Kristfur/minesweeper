@@ -90,9 +90,10 @@ footer i{
 }
 
 .modal div{
-    margin: 20% auto;
+    margin: 0;
     background-color: #e4e4e4;
-    border: 2px solid #ffffff;
+    border-top: 6px solid #ffffff;
+    border-bottom: 6px solid #ffffff;
 }
 
 /* Rules */
