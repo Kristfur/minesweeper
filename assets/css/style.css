@@ -99,31 +99,37 @@ footer i{
 /* Settings */
 #settings-content-grid {
     display: grid;
-    padding: 10%;
-    text-align: center;
-    grid-template-columns: 40% 40%;
+    margin: 20%;
+    grid-template-columns: 50% 50%;
 }
 
 #settings-content-grid select, label, input {
     margin: 8px 0;
+    vertical-align: middle;
 }
 
 /* Leaderboard */
+#leaderboard-page h2{
+    padding-top: 16px;
+}
+
+#leaderboard-select{
+    display: grid;
+    margin: 8px 10%;
+    grid-template-columns: 50% 50%;
+}
+
 #leaderboard-content {
-    padding: 16px 15%;
+    padding: 16px 8px;
     display: grid;
     grid-template-columns: 20% 40% 40%;
     font-size: small;
 }
 
-#leaderboard-select{
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
 #leaderboard-select label, select {
     height: 32px;
     margin: 0;
+    margin-bottom: 4px;
 }
 
 .new-score {
