@@ -148,3 +148,8 @@ footer i{
 .revealed-tile {
     border: 2px #999999 solid;
 }
+
+/* Focused tile (keyboard)*/
+#focused {
+    border: 4px #3510c7 solid;
+}

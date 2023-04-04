@@ -1,11 +1,6 @@
 // Event listeners
 document.addEventListener("DOMContentLoaded", function(){
     let container = document.getElementById('game-board');
-    let pressTime = null;
-    let longPress = false;
-    let eventTargetDown;
-    let timerOn = false;
-    let minesMarked = 0;
 
     let buttons = document.getElementsByTagName("button");
 
@@ -24,6 +19,10 @@ document.addEventListener("DOMContentLoaded", function(){
                 timerOn = false;
                 clearInterval(timerTick);
                 document.getElementById('lose-modal').style.display = 'none';
+                let modals = document.getElementsByClassName('modal');
+                for (let modal of modals){
+                    modal.style.display = 'none';
+                }
                 generateBoard(); 
             } else if (this.getAttribute("data-type") === "rules"){
                 playSound('click');  
@@ -82,22 +81,47 @@ document.addEventListener("DOMContentLoaded", function(){
     });
     
     //Add event listeners to game tiles dynamically
+    container.addEventListener("mousedown", processClick);
+    container.addEventListener("mouseup", processClick);
+    //Touchscreen devices    
+    container.addEventListener("touchstart", processClick);
+    container.addEventListener("touchend", processClick);
+
+    //Keyboard
+    document.addEventListener("keydown", function(event) {
+        event = event || window.event;
+        keyPress(event);
+    });
+});
+
+let pressTime = null;
+let longPress = false;
+let eventTargetDown;
+let timerOn = false;
+let minesMarked = 0;
+/**
+ * Uses the given event to detirmine what happens on the game board
+ * @param {*event} click event 
+ */
+function processClick(event){
     //Use mousedown, mouseup and a timer to see if user did a short or long click
     //Short click reveals tile
     //Long click flaggs or unflaggs tile
     //*Flagged tiles cannot be revealed unless unflagged first*
-    container.addEventListener("mousedown", function(event){
+    if(event.buttons >= 0){loseFocus();}
+    if (event.type == 'mousedown' || event.type == 'touchdown'){
         eventTargetDown = event.target;
         longPress = false;
         pressTime = null;
-        pressTime = setTimeout(function() {
-            //Set timeout for long click    
-            longPress = true;        
+
+        if(event.thisIsLongClick) {
             if(event.target.classList.contains('hidden-tile')){
                 //If tile is hidden, then flag it
                 let classes = event.target.classList;
+                let isFocused = event.thisIsFocused ? `id = 'focused'` : "";
                 event.target.remove();
-                document.getElementById('game-board').innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                document.getElementById('game-board').innerHTML += `<span ${isFocused}
+                class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background: url('assets/images/flag.png') no-repeat center center;
                 background-size: contain; background-color: #bbbbbb;"></span>`;  
@@ -105,59 +129,59 @@ document.addEventListener("DOMContentLoaded", function(){
             } else if(event.target.classList.contains('flagged-tile')){
                 //If tile is flagged, then unflag it
                 let classes = event.target.classList;
+                let isFocused = event.thisIsFocused ? `id = 'focused'` : "";
                 event.target.remove();
-                document.getElementById('game-board').innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                document.getElementById('game-board').innerHTML += `<span ${isFocused}
+                class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}";</span>`;   
                 minesMarked--;
             }
 
             playSound('flag');  
-        }, 350);
+        }
+        else {
+            pressTime = setTimeout(function() {
+                //Set timeout for long click    
+                longPress = true;        
+                if(event.target.classList.contains('hidden-tile')){
+                    //If tile is hidden, then flag it
+                    let classes = event.target.classList;
+                    let isFocused = event.thisIsFocused ? `id = 'focused'` : "";
+                    event.target.remove();
+                    document.getElementById('game-board').innerHTML += `<span ${isFocused}
+                    class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                    style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
+                    background: url('assets/images/flag.png') no-repeat center center;
+                    background-size: contain; background-color: #bbbbbb;"></span>`;  
+                    minesMarked++; 
+                } else if(event.target.classList.contains('flagged-tile')){
+                    //If tile is flagged, then unflag it
+                    let classes = event.target.classList;
+                    let isFocused = event.thisIsFocused ? `id = 'focused'` : "";
+                    event.target.remove();
+                    document.getElementById('game-board').innerHTML += `<span ${isFocused}
+                    class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                    style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}";</span>`;   
+                    minesMarked--;
+                }
+
+                playSound('flag');  
+            }, 350);
+        }
 
         checkMines(minesMarked);
-    });
-    //Touchscreen devices
-    container.addEventListener("touchstart", function(event){
-        event.preventDefault();
-        eventTargetDown = event.target;
-        longPress = false;
-        pressTime = null;
-        pressTime = setTimeout(function() {   
-            //Set timeout for long touch             
-            longPress = true;
-            if(event.target.classList.contains('hidden-tile')){
-                //If tile is hidden, then flag it
-                let classes = event.target.classList;
-                event.target.remove();
-                document.getElementById('game-board').innerHTML += `<span class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
-                background: url('assets/images/flag.png') no-repeat center center;
-                background-size: contain; background-color: #bbbbbb;"></span>`;   
-                minesMarked++;
-            } else if(event.target.classList.contains('flagged-tile')){
-                //If tile is flagged, then unflag it
-                let classes = event.target.classList;
-                event.target.remove();
-                document.getElementById('game-board').innerHTML += `<span class="hidden-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}";</span>`;   
-                minesMarked--;
-            }
-
-            playSound('flag');  
-        }, 350);
-        
-        checkMines(minesMarked);
-    });
-
-    container.addEventListener("mouseup", function(event){
+    } 
+    else if(event.type == 'mouseup'  || event.type == 'touchup'){
         //On mouseup clear timeout for long click
         clearTimeout(pressTime);
         if (eventTargetDown === event.target){
             //If long click did not happen yet, then do short click
             if(event.target.classList.contains('hidden-tile') && !longPress){
                 let classes = event.target.classList;
+                let isFocused = event.thisIsFocused ? `id = 'focused'` : "";
                 event.target.remove();
-                this.innerHTML += `<span class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
+                document.getElementById('game-board').innerHTML += `<span ${isFocused}
+                class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></span>`;    
@@ -173,34 +197,8 @@ document.addEventListener("DOMContentLoaded", function(){
         if (!timerOn) {startTimer(); timerOn = true;}
         //Check for win
         checkMines(minesMarked);
-    });
-    //Touchscreen devices
-    container.addEventListener("touchend", function(event){
-        //On touchup clear timeout for long touch
-        clearTimeout(pressTime);
-        if (eventTargetDown === event.target){
-            //If long touch did not happen yet, then do short touch
-            if(event.target.classList.contains('hidden-tile') && !longPress){
-                let classes = event.target.classList;
-                event.target.remove();
-                this.innerHTML += `<span class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
-                background: url('assets/images/number-${classes[1]}.png') no-repeat center center;
-                background-size: contain;"></span>`;
-                
-                playSound('reveal');  
-
-                //If a mine(9) is revealed, then lose game
-                if (classes[1] == 9){loseGame(); timerOn = true;} 
-            }
-        }
-        longPress = false;
-
-        if (!timerOn) {startTimer(); timerOn = true;}
-        //Check for win
-        checkMines(minesMarked);
-    });
-});
+    }
+}
 
 /** Display home page and hide other pages */
 function displayHome(){
@@ -242,7 +240,9 @@ function displaySettings(){
     document.getElementById('settings-modal').style.display = 'block';
 }
 
-/** Display leaderboard page and hide other pages */
+/** Display leaderboard page and hide other pages
+ * @param {*string} passes score to populateLeaderboard()
+ */
 function displayLeaderboard(currentScore){
     let pages = document.getElementsByClassName("page");
 
@@ -444,9 +444,9 @@ function buildBoardTiles(board){
             //Tile classes:
             //hidden-tile    -> wether tile has been revealed or not
             //${board[x][y]} -> number of adjacent mines, or is a mine (9)
+            //$x{x + 1}      -> x position in grid 
             //$y{y + 1}      -> y position in grid
-            //$x{x + 1}      -> x position in grid
-            gameArea.innerHTML += `<span class="hidden-tile ${board[y][x]} y${y + 1} x${x + 1}" 
+            gameArea.innerHTML += `<span class="hidden-tile ${board[y][x]} x${y + 1} y${x + 1}" 
             style="grid-column:${y + 1}; grid-row:${x + 1};"></span>`
         }
     }
@@ -577,7 +577,9 @@ function doNotSave(){
     }
 }
 
-/** Gets data from local storage and populates leaderboard display */
+/** Gets data from local storage and populates leaderboard display 
+ * @param {*string} score that was just set
+*/
 function populateLeaderboard(currentScore){
     let leaderboardView = document.getElementById('leaderboard-content');
     let isOneOfBest = false;
@@ -675,3 +677,77 @@ function preloadImage(im_url) {
     let img = new Image();
     img.src = im_url;
 }
+
+/** Keyboard support */
+function keyPress(event){
+    //Only allows keyboard to be used when lose state is not true
+    if(document.getElementById('lose-modal').style.display == 'none'){
+        //Gets the current focused tile
+        let focusedTile = document.getElementById('focused');
+        if(focusedTile == null){
+            //If focus does not exsist, set top left tile to focus
+            let tiles = document.getElementById('game-board').children;
+
+            for(let tile of tiles){
+                if(tile.classList.contains('y1') && tile.classList.contains('x1')){
+                    focusedTile = tile; 
+                    tile.setAttribute('id', 'focused'); 
+                    break;
+                }
+            }
+        } else {
+
+            //Use pressed key to move focus, reveal tile, and flag tile
+            if (event.key.toString() === "w" || event.key.toString() === 'W'){
+                //Move focus up
+                moveFocus(0, -1);
+            } else if (event.key.toString() === "s" || event.key.toString() === 'S'){
+                //Move focus down
+                moveFocus(0, 1);
+            } else if (event.key.toString() === "a" || event.key.toString() === 'A'){
+                //Move focuds left
+                moveFocus(-1, 0);
+            } else if (event.key.toString() === "d" || event.key.toString() === 'D'){
+                //Move focus right
+                moveFocus(1, 0);
+            } else if (event.key.toString() === "q" || event.key.toString() === 'Q'){
+                //Reveal tile
+                //Create object to simulate click event to pass to processClick()
+                let myObject = {type: 'mousedown', target: document.getElementById('focused'), thisIsFocused: true}
+                processClick(myObject);
+                myObject = {type: 'mouseup', target: document.getElementById('focused'), thisIsFocused: true}
+                processClick(myObject);
+            } else if (event.key.toString() === "e" || event.key.toString() === 'E'){
+                //Flag/Unflag tile
+                //Create object to simulate long click event to pass to processClick()
+                let myObject = {type: 'mousedown', target: document.getElementById('focused'), 
+                thisIsFocused: true, thisIsLongClick: true}
+                processClick(myObject);
+            } 
+        }
+    }
+}
+
+/** Uses given parameters to move the focus to neighboring tile if it exsists */
+function moveFocus(moveX, moveY){
+    console.log(moveX, moveY);
+
+    let focusPos = document.getElementById('focused').classList;
+
+    let tiles = document.getElementById('game-board').children;
+    for(let tile of tiles){
+        if(tile.classList.contains(`x${parseInt(focusPos[2][1]) + moveX}`) &&
+            tile.classList.contains(`y${parseInt(focusPos[3][1]) + moveY}`)){
+            console.log(tile);
+            console.log(`x${parseInt(focusPos[2][1]) + moveX}`, `y${parseInt(focusPos[3][1]) + moveY}`);
+            document.getElementById('focused').removeAttribute('id');
+            tile.setAttribute('id', 'focused');
+        }
+    }
+}
+
+/** Removes focus from all tiles (For when user uses the mouse) */
+function loseFocus(){
+    try{document.getElementById('focused').removeAttribute('id');}catch{}
+}
+   
