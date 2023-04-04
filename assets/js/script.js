@@ -568,6 +568,7 @@ function checkInput(){
     let input = document.getElementById('name').value;
 
     if (input == ''){alert('Name cannot be blank');}
+    else if (input.length > 12){alert('Name cannot be longer than 12 characters');}
     else if (input.indexOf(' ') >= 0){alert('Name cannot have a space');}
     else {saveScore();}
 }
