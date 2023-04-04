@@ -104,6 +104,8 @@ let minesMarked = 0;
  * @param {*event} click event 
  */
 function processClick(event){
+    if(event.type == 'touchdown' || event.type == 'touchup'){event.preventDefault();}
+
     //Use mousedown, mouseup and a timer to see if user did a short or long click
     //Short click reveals tile
     //Long click flaggs or unflaggs tile
