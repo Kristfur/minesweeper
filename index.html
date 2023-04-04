@@ -55,22 +55,24 @@
         <div id="settings-modal" class="modal">
             <div id="settings-content">
                 <span class="close"> &langle; &times &rangle; </span>
-                <h1>Settings</h1>
-                <label>Grid Size</label>
-                <select id="sel-grid-size" name="grid-size">
-                    <option value="3">3x3</option>
-                    <option value="5" selected>5x5</option>
-                    <option value="8">8x8</option>
-                    <option value="10">10x10</option>
-                </select>
-                <label>Mines</label>
-                <select id="sel-mine-count" name="mine-count">
-                    <option value="20">Few</option>
-                    <option value="30" selected>Normal </option>
-                    <option value="40">Many</option>
-                </select>
-                <label for="sound">Sound</label>
-                <input id='sound' type="checkbox" name="sound" checked>
+                <h2>Settings</h2>
+                <div id="settings-content-grid">
+                    <label for="sel-grid-size">Grid Size</label>
+                    <select id="sel-grid-size" name="grid-size">
+                        <option value="3">3x3</option>
+                        <option value="5" selected>5x5</option>
+                        <option value="8">8x8</option>
+                        <option value="10">10x10</option>
+                    </select>
+                    <label for="sel-mine-count">Mines</label>
+                    <select id="sel-mine-count" name="mine-count">
+                        <option value="20">Few</option>
+                        <option value="30" selected>Normal </option>
+                        <option value="40">Many</option>
+                    </select>
+                    <label for="sound">Sound</label>
+                    <input id='sound' type="checkbox" name="sound" checked>
+                </div>
             </div>
         </div>
         <!-- Game page -->

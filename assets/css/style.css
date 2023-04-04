@@ -89,21 +89,23 @@ footer i{
     text-decoration: none;
 }
 
-.modal div{
+.modal > div{
     margin: 0;
     background-color: #e4e4e4;
     border-top: 6px solid #ffffff;
     border-bottom: 6px solid #ffffff;
 }
 
-/* Rules */
-#rules-content{
-
+/* Settings */
+#settings-content-grid {
+    display: grid;
+    padding: 10%;
+    text-align: center;
+    grid-template-columns: 40% 40%;
 }
 
-/* Settings */
-#settings-content {
-
+#settings-content-grid select, label, input {
+    margin: 8px 0;
 }
 
 /* Leaderboard */
