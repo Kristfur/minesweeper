@@ -789,4 +789,3 @@ function moveFocus(moveX, moveY){
 function loseFocus(){
     try{document.getElementById('focused').removeAttribute('id');}catch{}
 }
-   

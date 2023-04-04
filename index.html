@@ -29,9 +29,9 @@
         <div class="page" id="home-page">
             <button id="btn-start-h" data-type="start">    
                 <span style="color:#006eff">P</span>
-                <span style="color:#029b02">L</span>
-                <span style="color:#e22908">A</span>
-                <span style="color:#e9a718">Y</span>
+                <span style="color:#e22908">L</span>
+                <span style="color:#029b02">A</span>
+                <span style="color:#cf612A">Y</span>
                 <i class="fa-solid fa-bomb"></i>
             </button>
             <button id="btn-rules-h" data-type="rules">Rules</button>
@@ -41,7 +41,7 @@
         <!-- Rules page -->
         <div id="rules-modal" class="modal">
             <div id="rules-content">
-                <span class="close">&langle; &times &rangle;</span>
+                <span class="close">&langle; &times; &rangle;</span>
                 <h2>How To Play</h2>
                 <p>Click on the tiles to reveal them</p>
                 <p>The number on the tile shows how many adjacent tiles are mines</p>
@@ -49,12 +49,16 @@
                 <p>Do the same to remove the flag</p>
                 <p>Try to uncover the board without revealing a mine <i class="fa-solid fa-bomb"></i></p>
                 <p>Good Luck!</p>
+                <p style="font-weight: bold;">Keyboard Controls</p>
+                <p>W A S D -> Move cursor</p>
+                <p>Q -> Reveal tile</p>    
+                <p>E -> Place/remove flag</p>    
             </div>
         </div>
         <!-- Settings page -->
         <div id="settings-modal" class="modal">
             <div id="settings-content">
-                <span class="close"> &langle; &times &rangle; </span>
+                <span class="close"> &langle; &times; &rangle; </span>
                 <h2>Settings</h2>
                 <div id="settings-content-grid">
                     <label for="sel-grid-size">Grid Size</label>
@@ -96,7 +100,7 @@
         <div class="page" id="win-page">
             <div id="win-content">
                 <span>You win!</span>
-                <span id="time">your time</span>
+                <label id="time" for="name">Your time</label>
                 <input type="text" id="name" name="name" placeholder="Your name">
 
                 <button id="score-submit" data-type="save">Save</button>
@@ -107,14 +111,14 @@
         <div class="page" id="leaderboard-page">
             <h2>Leaderboard</h2>
             <div id="leaderboard-select">
-                <label>Grid Size</label>
+                <label for="sel-grid-size-l">Grid Size</label>
                 <select id="sel-grid-size-l" name="grid-size-l">
                     <option value="3">3x3</option>
                     <option value="5">5x5</option>
                     <option value="8">8x8</option>
                     <option value="10">10x10</option>
                 </select>
-                <label>Mines</label>
+                <label for="sel-mine-count-l">Mines</label>
                 <select id="sel-mine-count-l" name="mine-count-l">
                     <option value="20">Few</option>
                     <option value="30">Normal </option>
