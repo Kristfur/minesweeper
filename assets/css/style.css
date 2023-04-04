@@ -13,6 +13,11 @@ a {
     color: black;
 }
 
+h2 {
+    padding: 16px 0;
+    margin: 0;
+}
+
 main > div {
     width: 80%;
     margin: 0 auto;
@@ -99,20 +104,18 @@ footer i{
 /* Settings */
 #settings-content-grid {
     display: grid;
-    margin: 20%;
+    margin: 10% 20%;
     grid-template-columns: 50% 50%;
 }
 
-#settings-content-grid select, label, input {
+#settings-content-grid select, 
+#settings-content-grid label, 
+#settings-content-grid input {
     margin: 8px 0;
     vertical-align: middle;
 }
 
 /* Leaderboard */
-#leaderboard-page h2{
-    padding-top: 16px;
-}
-
 #leaderboard-select{
     display: grid;
     margin: 8px 10%;
@@ -126,7 +129,8 @@ footer i{
     font-size: small;
 }
 
-#leaderboard-select label, select {
+#leaderboard-select label, 
+#leaderboard-select select {
     height: 32px;
     margin: 0;
     margin-bottom: 4px;
@@ -167,4 +171,34 @@ footer i{
 /* Focused tile (keyboard)*/
 #focused {
     border: 4px #3510c7 solid;
+}
+
+/* Lose page */
+#lose-content h2{
+    padding-bottom: 24px;
+}
+
+#lose-content{
+    padding-bottom: 24px;
+}
+
+/* Game page */
+#game-page {
+    padding: 8px;
+}
+
+#mines-left{
+    display: inline-block;
+    text-align: left;
+    width: 40%;
+}
+
+#timer{
+    display: inline-block;
+    text-align: right;
+    width: 40%;
+}
+
+#game-page button{
+    margin: 4px;
 }

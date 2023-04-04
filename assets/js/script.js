@@ -469,7 +469,7 @@ function buildBoardTiles(board){
     gameArea.style.gridTemplateColumns = "";
     gameArea.style.gridTemplateRows = "";
     gameArea.innerHTML = "";
-    document.getElementById('mines-left').innerHTML = "Mines Remaining: 0";
+    document.getElementById('mines-left').innerHTML = "Mines Left: 0";
     document.getElementById('timer').innerHTML = "Time: 00:00";
 
     for (let t = 0; t < gridSize; t++){
@@ -515,7 +515,7 @@ function startTimer(){
 function checkMines(minesMarked){
     let gridSize = document.getElementById('sel-grid-size').value;
     let minesCount = Math.floor((gridSize * gridSize) * document.getElementById('sel-mine-count').value / 100);
-    document.getElementById('mines-left').innerHTML = `Mines Remaining: ${minesCount - minesMarked}`;
+    document.getElementById('mines-left').innerHTML = `Mines Left: ${minesCount - minesMarked}`;
     if (minesMarked == minesCount){
         //Final check to see if all flags are on mines
         let flagged = document.getElementsByClassName('flagged-tile');
