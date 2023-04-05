@@ -130,7 +130,7 @@ function processClick(event) {
                 document.getElementById('game-board').innerHTML += `<span ${isFocused}
                 class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
-                background: url('../assets/images/flag.png') no-repeat center center;
+                background: url('./assets/images/flag.png') no-repeat center center;
                 background-size: contain; background-color: #bbbbbb;"></span>`;
                 minesMarked++;
             } else if (event.target.classList.contains('flagged-tile')) {
@@ -157,7 +157,7 @@ function processClick(event) {
                     document.getElementById('game-board').innerHTML += `<span ${isFocused}
                     class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                     style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
-                    background: url('../assets/images/flag.png') no-repeat center center;
+                    background: url('./assets/images/flag.png') no-repeat center center;
                     background-size: contain; background-color: #bbbbbb;"></span>`;
                     minesMarked++;
                 } else if (event.target.classList.contains('flagged-tile')) {
@@ -189,7 +189,7 @@ function processClick(event) {
                 document.getElementById('game-board').innerHTML += `<span ${isFocused}
                 class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
-                background: url('../assets/images/number-${classes[1]}.png') no-repeat center center;
+                background: url('./assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></span>`;
 
                 //If a mine(9) is revealed, then lose game
@@ -242,7 +242,7 @@ function revealAdjacentEmptys(tile) {
                     document.getElementById('game-board').innerHTML += `<span
                     class="revealed-tile ${newClasses[1]} ${newClasses[2]} ${newClasses[3]}" 
                     style="grid-column:${newClasses[2].slice(1)}; grid-row:${newClasses[3].slice(1)}; 
-                    background: url('../assets/images/number-${newClasses[1]}.png') no-repeat center center;
+                    background: url('./assets/images/number-${newClasses[1]}.png') no-repeat center center;
                     background-size: contain;"></span>`;
 
                     //If a 0 tile was revealed, reveal all adjacent tiles
