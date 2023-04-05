@@ -781,7 +781,6 @@ function keyPress(event) {
                 }
             }
         } else {
-
             //Use pressed key to move focus, reveal tile, and flag tile
             if (event.key.toString() === "w" || event.key.toString() === 'W') {
                 //Move focus up
@@ -823,6 +822,18 @@ function keyPress(event) {
             }
         }
     }
+
+    //If rules or settings modal open, close them whe 'Escape' pressed
+    if (event.key.toString() == 'Escape' 
+    && (document.getElementById('rules-modal').style.display !== 'none' || 
+        document.getElementById('settings-modal').style.display !== 'none')){
+        console.log("hgew");
+        //Close modals
+        playSound('click');
+        document.getElementById('rules-modal').style.display = 'none';
+        document.getElementById('settings-modal').style.display = 'none';
+    }
+    console.log(event.key);
 }
 
 /** Uses given parameters to move the focus to neighboring tile if it exsists */
