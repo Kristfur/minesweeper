@@ -123,6 +123,7 @@ function processClick(event) {
         if (event.thisIsLongClick) {
             if (event.target.classList.contains('hidden-tile')) {
                 //If tile is hidden, then flag it
+                playSound('flag');
                 let classes = event.target.classList;
                 let isFocused = event.thisIsFocused ? `id = 'focused'` : "";
                 event.target.remove();
@@ -134,6 +135,7 @@ function processClick(event) {
                 minesMarked++;
             } else if (event.target.classList.contains('flagged-tile')) {
                 //If tile is flagged, then unflag it
+                playSound('flag');
                 let classes = event.target.classList;
                 let isFocused = event.thisIsFocused ? `id = 'focused'` : "";
                 event.target.remove();
@@ -142,14 +144,13 @@ function processClick(event) {
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}";</span>`;
                 minesMarked--;
             }
-
-            playSound('flag');
         } else {
             pressTime = setTimeout(function () {
                 //Set timeout for long click    
                 longPress = true;
                 if (event.target.classList.contains('hidden-tile')) {
                     //If tile is hidden, then flag it
+                    playSound('flag');
                     let classes = event.target.classList;
                     let isFocused = event.thisIsFocused ? `id = 'focused'` : "";
                     event.target.remove();
@@ -160,7 +161,8 @@ function processClick(event) {
                     background-size: contain; background-color: #bbbbbb;"></span>`;
                     minesMarked++;
                 } else if (event.target.classList.contains('flagged-tile')) {
-                    //If tile is flagged, then unflag it
+                    //If tile is flagged, then unflag it                    
+                    playSound('flag');
                     let classes = event.target.classList;
                     let isFocused = event.thisIsFocused ? `id = 'focused'` : "";
                     event.target.remove();
@@ -169,8 +171,6 @@ function processClick(event) {
                     style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}";</span>`;
                     minesMarked--;
                 }
-
-                playSound('flag');
             }, 350);
         }
 
@@ -181,6 +181,8 @@ function processClick(event) {
         if (eventTargetDown === event.target) {
             //If long click did not happen yet, then do short click
             if (event.target.classList.contains('hidden-tile') && !longPress) {
+                playSound('reveal');
+                
                 let classes = event.target.classList;
                 let isFocused = event.thisIsFocused ? `id = 'focused'` : "";
                 event.target.remove();
@@ -189,8 +191,6 @@ function processClick(event) {
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background: url('../assets/images/number-${classes[1]}.png') no-repeat center center;
                 background-size: contain;"></span>`;
-
-                playSound('reveal');
 
                 //If a mine(9) is revealed, then lose game
                 if (classes[1] == 9) {
