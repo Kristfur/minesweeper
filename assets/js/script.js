@@ -82,6 +82,7 @@ document.getElementById('sel-mine-count-l').addEventListener("change", function 
 
 let container = document.getElementById('game-board');
 //Add event listeners to game tiles dynamically
+//processClick uses event.target to get clicked element
 container.addEventListener("mousedown", processClick);
 container.addEventListener("mouseup", processClick);
 //Touchscreen devices    
@@ -107,7 +108,6 @@ function processClick(event) {
     if (event.type == 'touchstart' || event.type == 'touchend') {
         event.preventDefault();
     }
-
     //Use mousedown, mouseup and a timer to see if user did a short or long click
     //Short click reveals tile
     //Long click flaggs or unflaggs tile
@@ -182,7 +182,7 @@ function processClick(event) {
             //If long click did not happen yet, then do short click
             if (event.target.classList.contains('hidden-tile') && !longPress) {
                 playSound('reveal');
-                
+
                 let classes = event.target.classList;
                 let isFocused = event.thisIsFocused ? `id = 'focused'` : "";
                 event.target.remove();
@@ -194,8 +194,12 @@ function processClick(event) {
 
                 //If a mine(9) is revealed, then lose game
                 if (classes[1] == 9) {
-                    loseGame();
-                    timerOn = true;
+                    //If this is first click, reset board so first clikc is not a mine
+                    if (!timerOn){ resetBoard(event.target);}
+                    else {
+                        loseGame();
+                        timerOn = true;
+                    }
                 }
 
                 //If a 0 tile was revealed, reveal all adjacent tiles
@@ -249,6 +253,37 @@ function revealAdjacentEmptys(tile) {
             }
         }
     }
+}
+
+/**
+ * Reset game board and simulate click on the tile that replaced the tile given
+ * @param {*tile} thisTile 
+ */
+function resetBoard(thisTile){
+    //Generate new game board
+    generateBoard();
+
+    //Get the new tile that is in the same position as the tile clicked
+    let tileClicked;
+    let tiles = document.getElementById('game-board').children;
+    for (let tile of tiles) {
+        if (tile.classList.contains(thisTile.classList[2]) && tile.classList.contains(thisTile.classList[3])) {
+            tileClicked = tile;
+            break;
+        }
+    }
+
+    //Simulate click on new tile
+    let myObject = {
+        type: 'mousedown',
+        target: tileClicked
+    };
+    processClick(myObject);
+    myObject = {
+        type: 'mouseup',
+        target: tileClicked
+    };
+    processClick(myObject);
 }
 
 /** Display home page and hide other pages */
