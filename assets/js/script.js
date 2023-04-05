@@ -146,6 +146,7 @@ function processClick(event) {
             }
         } else {
             pressTime = setTimeout(function () {
+                console.log(event);
                 //Set timeout for long click    
                 longPress = true;
                 if (event.target.classList.contains('hidden-tile')) {
@@ -234,7 +235,7 @@ function revealAdjacentEmptys(tile) {
                 let thisTile = document.getElementsByClassName(`x${parseInt(tile.classList[2].slice(1)) + x} y${parseInt(tile.classList[3].slice(1)) + y}`);
                 if (thisTile[0] != null) {
                     let newClasses = thisTile[0].classList;
-                    //Skip tile if it was already revealed
+                    //Skip tile if it is not a hidden tile
                     if (newClasses[0] !== 'hidden-tile') {
                         continue;
                     }
