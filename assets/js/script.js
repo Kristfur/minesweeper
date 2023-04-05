@@ -146,7 +146,6 @@ function processClick(event) {
             }
         } else {
             pressTime = setTimeout(function () {
-                console.log(event);
                 //Set timeout for long click    
                 longPress = true;
                 if (event.target.classList.contains('hidden-tile')) {
@@ -302,11 +301,6 @@ function displayHome() {
 /** Display game page and hide other pages */
 function displayBoard() {
     let pages = document.getElementsByClassName("page");
-
-    preloadImage("../assets/images/flag.png");
-    for (let i = 1; i < 10; i++) {
-        preloadImage(`../assets/images/number-${i}.png`);
-    }
 
     for (let page of pages) {
         page.style.display = 'none';
@@ -757,12 +751,6 @@ function playSound(desiredSound) {
     }
 }
 
-/** Preload images */
-function preloadImage(im_url) {
-    let img = new Image();
-    img.src = im_url;
-}
-
 /** Keyboard support */
 function keyPress(event) {
     //Only allows keyboard to be used when lose state is not true and game board is visible
@@ -828,13 +816,11 @@ function keyPress(event) {
     if (event.key.toString() == 'Escape' 
     && (document.getElementById('rules-modal').style.display !== 'none' || 
         document.getElementById('settings-modal').style.display !== 'none')){
-        console.log("hgew");
         //Close modals
         playSound('click');
         document.getElementById('rules-modal').style.display = 'none';
         document.getElementById('settings-modal').style.display = 'none';
     }
-    console.log(event.key);
 }
 
 /** Uses given parameters to move the focus to neighboring tile if it exsists */
