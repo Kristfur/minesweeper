@@ -131,7 +131,7 @@ function processClick(event) {
                 class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
                 background-color: #bbbbbb;">
-                <img src="../assets/images/flag.png" alt="Flag"></span>`;
+                <img src="./assets/images/flag.png" alt="Flag"></span>`;
                 minesMarked++;
             } else if (event.target.classList.contains('flagged-tile')) {
                 //If tile is flagged, then unflag it
@@ -159,7 +159,7 @@ function processClick(event) {
                     class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                     style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)};
                     background-color: #bbbbbb;">
-                    <img src="../assets/images/flag.png" alt="Flag"></span>`;
+                    <img src="./assets/images/flag.png" alt="Flag"></span>`;
                     minesMarked++;
                 } else if (event.target.classList.contains('flagged-tile')) {
                     //If tile is flagged, then unflag it                    
@@ -191,7 +191,7 @@ function processClick(event) {
                 class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)};
                 background-color: #fff;">
-                <img src="../assets/images/number-${classes[1]}.png" alt="${classes[1]}"></span>`;
+                <img src="./assets/images/number-${classes[1]}.png" alt="${classes[1]}"></span>`;
 
                 //If a mine(9) is revealed, then lose game
                 if (classes[1] == 9) {
@@ -244,7 +244,7 @@ function revealAdjacentEmptys(tile) {
                     class="revealed-tile ${newClasses[1]} ${newClasses[2]} ${newClasses[3]}" 
                     style="grid-column:${newClasses[2].slice(1)}; grid-row:${newClasses[3].slice(1)};
                     background-color: #fff;">
-                    <img src="../assets/images/number-${newClasses[1]}.png" alt="${newClasses[1]}"></span>`;
+                    <img src="./assets/images/number-${newClasses[1]}.png" alt="${newClasses[1]}"></span>`;
                     
                     //If a 0 tile was revealed, reveal all adjacent tiles
                     if (newClasses[1] == 0) {
