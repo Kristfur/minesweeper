@@ -223,3 +223,14 @@ footer i{
 #game-page button{
     margin: 4px;
 }
+
+/* 404 page */
+#not-found {
+    display: grid;
+    place-items: center;
+}
+
+#not-found-content {
+    display: block;
+    padding: 32px;
+}
