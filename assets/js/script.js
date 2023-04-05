@@ -130,8 +130,8 @@ function processClick(event) {
                 document.getElementById('game-board').innerHTML += `<span ${isFocused}
                 class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
                 style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
-                background: url('./assets/images/flag.png') no-repeat center center;
-                background-size: contain; background-color: #bbbbbb;"></span>`;
+                background-color: #bbbbbb;">
+                <img src="../assets/images/flag.png" alt="Flag"></span>`;
                 minesMarked++;
             } else if (event.target.classList.contains('flagged-tile')) {
                 //If tile is flagged, then unflag it
@@ -156,9 +156,9 @@ function processClick(event) {
                     event.target.remove();
                     document.getElementById('game-board').innerHTML += `<span ${isFocused}
                     class="flagged-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                    style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
-                    background: url('./assets/images/flag.png') no-repeat center center;
-                    background-size: contain; background-color: #bbbbbb;"></span>`;
+                    style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)};
+                    background-color: #bbbbbb;">
+                    <img src="../assets/images/flag.png" alt="Flag"></span>`;
                     minesMarked++;
                 } else if (event.target.classList.contains('flagged-tile')) {
                     //If tile is flagged, then unflag it                    
@@ -188,9 +188,9 @@ function processClick(event) {
                 event.target.remove();
                 document.getElementById('game-board').innerHTML += `<span ${isFocused}
                 class="revealed-tile ${classes[1]} ${classes[2]} ${classes[3]}" 
-                style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)}; 
-                background: url('./assets/images/number-${classes[1]}.png') no-repeat center center;
-                background-size: contain;"></span>`;
+                style="grid-column:${classes[2].slice(1)}; grid-row:${classes[3].slice(1)};
+                background-color: #fff;">
+                <img src="../assets/images/number-${classes[1]}.png" alt="${classes[1]}"></span>`;
 
                 //If a mine(9) is revealed, then lose game
                 if (classes[1] == 9) {
@@ -241,10 +241,10 @@ function revealAdjacentEmptys(tile) {
                     thisTile[0].remove();
                     document.getElementById('game-board').innerHTML += `<span
                     class="revealed-tile ${newClasses[1]} ${newClasses[2]} ${newClasses[3]}" 
-                    style="grid-column:${newClasses[2].slice(1)}; grid-row:${newClasses[3].slice(1)}; 
-                    background: url('./assets/images/number-${newClasses[1]}.png') no-repeat center center;
-                    background-size: contain;"></span>`;
-
+                    style="grid-column:${newClasses[2].slice(1)}; grid-row:${newClasses[3].slice(1)};
+                    background-color: #fff;">
+                    <img src="../assets/images/number-${newClasses[1]}.png" alt="${newClasses[1]}"></span>`;
+                    
                     //If a 0 tile was revealed, reveal all adjacent tiles
                     if (newClasses[1] == 0) {
                         revealAdjacentEmptys(thisTile[0]);
