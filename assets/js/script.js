@@ -729,8 +729,9 @@ function preloadImage(im_url) {
 
 /** Keyboard support */
 function keyPress(event) {
-    //Only allows keyboard to be used when lose state is not true
-    if (document.getElementById('lose-modal').style.display == 'none') {
+    //Only allows keyboard to be used when lose state is not true and game board is visible
+    if (document.getElementById('lose-modal').style.display == 'none' &&
+        document.getElementById('game-page').style.display !== 'none') {
         //Gets the current focused tile
         let focusedTile = document.getElementById('focused');
         if (focusedTile == null) {
