@@ -146,6 +146,11 @@ footer i{
     color: blueviolet;
 }
 
+#btn-home-l {
+    margin-bottom: 16px;
+}
+
+
 /* Game page */
 #game-board {
     display: grid;
