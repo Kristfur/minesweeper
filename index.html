@@ -70,9 +70,9 @@
                     </select>
                     <label for="sel-mine-count">Mines</label>
                     <select id="sel-mine-count" name="mine-count">
-                        <option value="20">Few</option>
-                        <option value="30" selected>Normal </option>
-                        <option value="40">Many</option>
+                        <option value="15">Few</option>
+                        <option value="25" selected>Normal </option>
+                        <option value="25">Many</option>
                     </select>
                     <label for="sound">Sound</label>
                     <input id='sound' type="checkbox" name="sound">
@@ -99,12 +99,13 @@
         <!-- Win page -->
         <div class="page" id="win-page">
             <div id="win-content">
-                <span>You win!</span>
+                <div>You win!</div>
                 <label id="time" for="name">Your time</label>
                 <input type="text" id="name" name="name" placeholder="Your name">
-
-                <button id="score-submit" data-type="save">Save</button>
-                <button id="do-not-save" data-type="do-not-save">Nope</button>
+                <span>
+                    <button id="score-submit" data-type="save">Save</button>
+                    <button id="do-not-save" data-type="do-not-save">No Thanks</button>
+                </span>
             </div>
         </div>
         <!-- Leaderboard page -->
@@ -120,9 +121,9 @@
                 </select>
                 <label for="sel-mine-count-l">Mines</label>
                 <select id="sel-mine-count-l" name="mine-count-l">
-                    <option value="20">Few</option>
-                    <option value="30">Normal </option>
-                    <option value="40">Many</option>
+                    <option value="15">Few</option>
+                    <option value="25">Normal </option>
+                    <option value="35">Many</option>
                 </select>
             </div>
             <div id="leaderboard-content">No best times set</div>

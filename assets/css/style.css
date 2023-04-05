@@ -192,6 +192,17 @@ footer i{
     padding-bottom: 24px;
 }
 
+/* Win page */
+#win-content {
+    display: grid;
+    grid-template-columns: 100%;
+    padding: 16px;
+}
+
+#name {
+    margin: 16px;
+}
+
 /* Game page */
 #game-page {
     padding: 8px;
