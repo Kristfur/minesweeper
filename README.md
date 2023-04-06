@@ -1,1 +1,124 @@
-[Minesweeper](https://kristfur.github.io/minesweeper/)
+# Minesweeper
+
+Minesweeper is a logic puzzle game that features a grid of tile. Each tile can be revealled to show a number or a mine. If a mine is revealled, the game is over. The number that is revealed shows how many of it's eight neighboring tiles are mines. The player must use logic to reveal off of the non-mine tiles to win. 
+
+[Minesweeper](https://kristfur.github.io/minesweeper/) is a recreation of this classic game in the form of a responsive website that can be played anywhere.
+
+![Responsive design example](docs/read-me-images/responsive-website.JPG)
+
+# Table of Contents
+* [User Experience](#user-experience)
+    * [Site Goals](#site-goals)
+    * [User Stories](#user-stories)
+    * [Design](#design)
+        * [Wireframes](#wireframes)        
+        * [Layout](#layout)
+        * [Color Scheme](#color-scheme)
+
+
+# User Experience
+## Site Goals
+* To provide a fun and quick logic game for the user to play
+* To have an intuitive menu so users don't have to look far for what they want
+* To have a selection of difficulty options for the user to choose from
+* To ensure the game is fully acessible on all devices from desktops to mobile touchscreen devices
+* To ensure the game is fully playable with only a keyboard
+
+## User Stories
+* As a user, I want a fun and quick logic game to play
+* As a user, I want to play an easier version of the game
+* As a user, I want to play a more challenging version of the game
+* As a user, I want to be able to play the game with only a keyboard
+* As a user, I want my previous high scores to be saved
+* As a user, I want the game to have sound that I can toggle on and off
+
+User Story:
+
+> As a user, I want a fun and quick logic game to play
+
+Acceptance Criteria:
+* It should be clear that it is a game, and how to play
+
+Implementation:
+* The focus of the home page is a large button the the center that prompts the user to 'PLAY', making it clear that it is a game. The rules can be acessed easily from the home page and during gameplay providing information about how to play.
+
+User Story:
+
+> As a user, I want to play an easier version of the game
+
+> As a user, I want to play a more challenging version of the game
+
+Acceptance Criteria:
+* The user should be able to change the difficulty of the game with ease, either to an easier version or more difficult version
+
+Implementation:
+* The user can navigate to the settings page from the home page and easily select size of the game board and the concentration of mines on the board, modifying the difficulty to the users' will
+
+User Story:
+
+> As a user, I want to be able to play the game with only a keyboard
+
+Acceptance Criteria:
+* The game and all of it's features must be fully accessible through only the use of a keyboard
+
+Implementation:
+* The user will be able to navigate the website with a keyboard and play the game in it's entirety only using a keyboard. Instructions on keyboard controls will be found in the rules section.
+
+User Story:
+
+> As a user, I want my previous high scores to be saved
+
+Acceptance Criteria:
+
+* The game must save the users score and have it be visible even on the next session
+
+Implementation:
+* Once the user completes the game, they will be offered the option to enter they name and save their time. This score will be saved to the local storage and be accessible to the user the next time they open the website
+
+User Story:
+
+> As a user, I want the game to have sound that I can toggle on and off
+
+Acceptance Criteria:
+
+* The website must have sound effects that the user can turn on and off
+
+Implementation:
+* In the settings, the user has an option to turn sounds on and off. The sounds provite immidate reactions for every action that is perfomred in the game
+
+## Design
+### Wireframes
+
+Title page
+
+![Design - Title page](docs/read-me-images/design-title-page.JPG)
+
+Rules page
+
+![Design - Rules page](docs/read-me-images/design-rules-page.JPG)
+
+Settings page
+
+![Design - Settings page](docs/read-me-images/design-settings-page.JPG)
+
+Leaderboard page
+
+![Design - Leaderboard page](docs/read-me-images/design-leaderboard-page.JPG)
+
+Game page
+
+![Design - Game page](docs/read-me-images/design-game-page.JPG)
+
+Win page
+
+![Design - Win page](docs/read-me-images/design-win-page.JPG)
+
+404 page
+
+![Design - 404 page](docs/read-me-images/design-404-page.JPG)
+
+### Layout
+The layout of the content on each page was chosen to minimise distraction and make it easy for the user to navigate the website, so the user can focus on the game and have hastle-free fun. The pages do not overwhelm the user with all of the information always being visible, but provide the option to easily seek the information they may need through intuative buttons. 
+
+### Color Scheme
+The color scheme of the website was chosen to be true to the classic game. The game board features gray tiles that are reveal colorful numbers. The game becomes more colorful as the game progresses, rewarding the users who play well. The home page mimics the game board with gray buttons and colorful letters 'PLAY', while also providing suitable contract for accessibility.
