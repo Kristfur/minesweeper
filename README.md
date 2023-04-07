@@ -125,5 +125,49 @@ The layout of the content on each page was chosen to minimise distraction and ma
 The color scheme of the website was chosen to be true to the classic game. The game board features gray tiles that are reveal colorful numbers. The game becomes more colorful as the game progresses, rewarding the users who play well. The home page mimics the game board with gray buttons and colorful letters 'PLAY', while also providing suitable contract for accessibility.
 
 # Features
-## Header
+## Site Wide
+### Header
+- A large clear logo with the name of the game.
+- Lets the user know the name of the game that they are playing, easily visible on every page.
+- The logo is clickable and provides an easy way to return to the home page.
+- At any point, from any page, the user may choose to return to the home page by clicking on the logo.
+- When the mouse hovers over the logo, the cursor changes to a pointer letting the user know that the logo is clickable.
+
+![Header snipet](docs/read-me-images/feature-logo.JPG)
+
+### Footer
+- Contains a GitHub icon and text prompting the user to follow me on GitHub.
+- Provides the user a link to my GitHub page that open in a new tab when clicked.
+
+![Footer snipet](docs/read-me-images/feature-github.JPG)
+
+### Favicon
+- The favicon is the reconisable bomb icon that appears in the game.
+- Allows the user to easily identify website from browser tabs.
+
+![Favicon snipet](docs/read-me-images/feature-favicon.JPG)
+
+### 404 Page
+- This page will display if the user navigates to a broken link.
+- The page features text and a link that brings the user back to the home page.
+- Additionaly, the 404 page will automaticaly redirect the user to the home page aster 10 seconds if no action is taken.
+- This informs the user that they entered an invaild link and provides them an easy way to get back to safety
+
+![404 page snipet](docs/read-me-images/feature-404.JPG)
+
+## Home Page
+- Main content of the home page is a large play button
+- The large play button is easily identifyable and makes it clear to the user that they are about to play a game
+- There are several smaller buttons that provide the user acess to the rules, settings and leaderboard while not getting in the way of or distracting from the play button.
+
+![Home page snipet](docs/read-me-images/feature-home.JPG)
+
+## Rules Page
 - 
+
+![Rules page snipet](docs/read-me-images/feature-rules.JPG)
+
+## Settings Page
+- 
+
+![Settings page snipet](docs/read-me-images/feature-settings.JPG)
