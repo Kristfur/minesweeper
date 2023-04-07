@@ -14,6 +14,7 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
         * [Wireframes](#wireframes)        
         * [Layout](#layout)
         * [Color Scheme](#color-scheme)
+* [Features](#features)
 
 
 # User Experience
@@ -122,3 +123,7 @@ The layout of the content on each page was chosen to minimise distraction and ma
 
 ### Color Scheme
 The color scheme of the website was chosen to be true to the classic game. The game board features gray tiles that are reveal colorful numbers. The game becomes more colorful as the game progresses, rewarding the users who play well. The home page mimics the game board with gray buttons and colorful letters 'PLAY', while also providing suitable contract for accessibility.
+
+# Features
+## Header
+- 
