@@ -161,13 +161,3 @@ The color scheme of the website was chosen to be true to the classic game. The g
 - There are several smaller buttons that provide the user acess to the rules, settings and leaderboard while not getting in the way of or distracting from the play button.
 
 ![Home page snipet](docs/read-me-images/feature-home.JPG)
-
-## Rules Page
-- 
-
-![Rules page snipet](docs/read-me-images/feature-rules.JPG)
-
-## Settings Page
-- 
-
-![Settings page snipet](docs/read-me-images/feature-settings.JPG)
