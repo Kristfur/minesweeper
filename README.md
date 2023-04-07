@@ -223,3 +223,12 @@ The color scheme of the website was chosen to be true to the classic game. The g
     - Revel a mine
     - Win the game
 - These sounds help to enhance the user's experience while playing the game.
+
+## Keyboard controls
+- The game supports full keyboard controls, these controls are easy to learn. (WASD to move focus, Q to reveal tile, E to place/remove flag)
+- This allows users to enjoy the game using only a keyboard.
+- The user can find the keyboard controls in the settings.
+- When using keyboard controls, the focused tile will be highlited so the user can easilt identify it.
+- When using the mouse to click after the keyboard focus has appeared, the keyboard focus will disappear to remove confusion. 
+
+![Keyboard focus snipet](docs/read-me-images/feature-keyboard-focus.JPG)
