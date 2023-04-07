@@ -56,7 +56,13 @@ document.getElementById('logo').addEventListener("click", function () {
     minesMarked = 0;
     timerOn = false;
     clearInterval(timerTick);
-    displayHome();
+
+    if(document.getElementById('win-page').style.display !== 'none'){
+        doNotSave();
+    } else {
+        displayHome();
+    }
+
 });
 
 //Add event listeners for 'x' in modals
