@@ -178,3 +178,48 @@ The color scheme of the website was chosen to be true to the classic game. The g
 - The (x) glows red when the user hovers over it, indicating that it can be clicked.
 
 ![Settings page snipet](docs/read-me-images/feature-settings.JPG)
+
+## Game Board
+### Game Information
+- Displays the number of mines remaining and the time elapsed since the first click
+- Mines remaining gives the user information to help them solve the game. Every flag the user places will reduce this number, any incorrectly flags will skew this number, punishing the user for placing flags incorrectly.
+- The timer gives the user some live feedback on how fast they are completing the game.
+
+![Game page snipet](docs/read-me-images/feature-mines-left-timer.JPG)
+
+### Helpful Buttons
+
+- The game page features four buttons with different, but self explanitory actions:
+    - Reset - Resets the game board to a new game. (For when the user wants to start a new game)
+    - Home - Brings the user to the home screen.
+    - Rules - Displays the rules to the user. (For when the user forgets the rules, it does not reset the current game)
+    - Leaderboard - Brings the user to the leaderboard page.
+
+![Helpful buttons sinpet](docs/read-me-images/feature-game-buttons.JPG)
+
+## Gameplay
+
+![Gameplay snipet](docs/read-me-images/feature-gameplay.JPG)
+
+
+### Click To Reveal
+- Every tile is either a mine or a number representing the number of neighboring mines, zeros are blank tiles.
+- The numbers on the tiles are large and easily readable, conveying it's information to the user in an effective manner.
+- The first tile the user clicks is never a mine. This prevents the situation where the user loses without event starting to play. This feature greatly improves the gaming experience.
+- If the user reveals a tile with no neighboring mines, a zero (or an empty tile), the game will automaticaly reveal all of the neighboring tiles, since none of them are mines. This removes the tedious task that the user would be doing anyway, improving the gaming experience. 
+
+### Flags
+- Are used to mark where the user thinks mines are located
+- The flags also help the user by making the tile never be reveal when they click on it, helping to prevent misclicks that would end the game. The user must first remove the flag before thay can reveal the tile.
+
+![Flag snipet](docs/read-me-images/feature-flag.JPG)
+
+### Sounds
+- The game is best playes with sounds enabled, the user can enable sounds through the settings.
+- Every action has a unique sound corrosponding with what action was performed, the different sounding actions are:
+    - Click on a menu button
+    - Reveal a tile
+    - Place/remove flag on/from a tile
+    - Revel a mine
+    - Win the game
+- These sounds help to enhance the user's experience while playing the game.
