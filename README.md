@@ -151,13 +151,30 @@ The color scheme of the website was chosen to be true to the classic game. The g
 - This page will display if the user navigates to a broken link.
 - The page features text and a link that brings the user back to the home page.
 - Additionaly, the 404 page will automaticaly redirect the user to the home page aster 10 seconds if no action is taken.
-- This informs the user that they entered an invaild link and provides them an easy way to get back to safety
+- This informs the user that they entered an invaild link and provides them an easy way to get back to safety.
 
 ![404 page snipet](docs/read-me-images/feature-404.JPG)
 
 ## Home Page
-- Main content of the home page is a large play button
-- The large play button is easily identifyable and makes it clear to the user that they are about to play a game
+- Main content of the home page is a large play button.
+- The large play button is easily identifyable and makes it clear to the user that they are about to play a game.
 - There are several smaller buttons that provide the user acess to the rules, settings and leaderboard while not getting in the way of or distracting from the play button.
 
 ![Home page snipet](docs/read-me-images/feature-home.JPG)
+
+## Rules Page
+- Informs the user on how to play the game, the controls are easy and intuative.
+- In this page, the user can learn what the aim of the game is, and how to play.
+- The rules page can be closed by clicking out of the container, or by clicking on the (x) at the top.
+- The (x) glows red when the user hovers over it, indicating that it can be clicked.
+
+![Rules page snipet](docs/read-me-images/feature-rules.JPG)
+
+## Settings Page
+- Here the user can change the difficulty of the game, they can increase or decrease the size of the board and the concentration of mines.
+- This allows the user to play an easier version of the game, and to play a more challening version.
+- The user can also choose to enable sound for the game, providing a more engaging gaming experience.
+- The settings page can be closed by clicking out of the container, or by clicking on the (x) at the top.
+- The (x) glows red when the user hovers over it, indicating that it can be clicked.
+
+![Settings page snipet](docs/read-me-images/feature-settings.JPG)
