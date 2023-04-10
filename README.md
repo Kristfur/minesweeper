@@ -39,10 +39,12 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
     * [Validator Testing](#validator-testing)
     * [Unfixed Bugs](#unfixed-bugs)
     * [Notable (Fixed) Bugs](#notable-fixed-bugs)
-* [Deployment]
+* [Deployment](#deployment)
     * [Version Control](#version-control)
     * [Deployment to GitHub Pages](#deployment-to-github-pages)
     * [Clone the Repository Code Locally](#clone-the-repository-code-locally)
+* [Credits](#credits)
+    * [Media](#media)
 
 
 # User Experience
@@ -397,3 +399,24 @@ The steps to clone the repository are as follows:
 4. Open your IDE (that has git installed)
 5. Paste the git command into the IDE terminal
 6. The project is now cloned on your local machine
+
+## Credits
+
+[Love Maths](https://github.com/AJGreaves/love-maths)
+- Elements of this project were used as a referance for the website and documentation. 
+
+[Grid Garden](https://cssgridgarden.com/)
+- Was used to learn how to use the CSS property.
+
+[Modal](https://www.w3schools.com/howto/howto_css_modals.asp)
+- Was used to learn hot to create and use a modal.
+
+[Unselectable Items](https://stackoverflow.com/questions/924916/is-there-a-way-to-make-a-div-unselectable)
+- Was used to help fix a notable bug during development. More information [here](#notable-fixed-bugs).
+
+
+### Media
+
+Website logo was created by me using [Cool Text](https://cooltext.com/).
+
+Sound is from [pixabay](https://pixabay.com/).
