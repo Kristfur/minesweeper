@@ -30,6 +30,8 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
     * [Flags](#flags)
     * [Sounds](#sounds)
 * [Keyboard Controls](#keyboard-controls)
+* [Lose Page](#lose-page)
+* [Win Page](#win-page)
 
 
 # User Experience
@@ -247,3 +249,18 @@ The color scheme of the website was chosen to be true to the classic game. The g
 - When using the mouse to click after the keyboard focus has appeared, the keyboard focus will disappear to remove confusion. 
 
 ![Keyboard focus snipet](docs/read-me-images/feature-keyboard-focus.JPG)
+
+## Lose Page
+- When the user reveals a mine tile, they lose the game and this page displays. It features a home button and a try again button.
+- This page mmakes it clear to the user that they lost and  prevents the user from playing that game further. It gives the user the option to return to the home menu, or to immediately try again.
+
+![Lose page snipet](docs/read-me-images/feature-lose-page.JPG)
+
+## Win Page
+- Displays win text, the user's time, a text input and two buttons, one to save the score and the other to not save the score.
+- This page makes it clear to the user that they won and it gives them the option to save their score so they can look at it in the future.
+- The scores are saved to local storage and can be accessed through the website on the same device it was saved on.
+- If the user decides to save their score, they must enter a valid name and click save, then they will be taken to the leaderboard page.
+- If the user decides to not save their score, a warning will display, letting the user know their score will not be saved and giving them a final choice to return or continue. 
+
+![Win page snipet](docs/read-me-images/feature-win-page.JPG)
