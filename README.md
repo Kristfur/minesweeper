@@ -15,6 +15,7 @@ Minesweeper is a logic puzzle game that features a grid of tiles. Each tile can 
         * [Layout](#layout)
         * [Color Scheme](#color-scheme)
     * [Accessibility](#accessibility)
+        * [Lighthouse Testing](#lighthouse-testing)
 * [Features](#features)
     * [Site Wide](#site-wide)
         * [Header](#header)
@@ -165,6 +166,11 @@ Testing was focused on the following:
 - Keyboard support for game controls.
 
 All accessibility criteria were met.
+
+### Lighthouse Testing
+A lighthouse test was performed on the website. It achieved perfect scores in all categories except the performance, which is almost a perfect score.
+
+![Lighthouse Test snippet](docs/read-me-images/lighthouse-test.JPG)
 
 # Features
 ## Site Wide
