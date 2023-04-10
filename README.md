@@ -33,6 +33,7 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
 * [Lose Page](#lose-page)
 * [Win Page](#win-page)
 * [Leaderboards](#leaderboards)
+* [Technologies](#technologies)
 
 
 # User Experience
@@ -279,3 +280,35 @@ The color scheme of the website was chosen to be true to the classic game. The g
 User's score is not in top 5
 
 ![Leaderboards extra score snipet](docs/read-me-images/feature-leaderboard-extra.JPG)
+
+# Technologies
+- HTML
+    - The structure of website was built with HTML code
+
+- Css
+    - The website was styled with a CSS file
+
+- Gitpod
+    - The website was developed using [gitpod.io](https://gitpod.io)
+
+- GitHub
+    - The source code is hosted on [GitHub](https://github.com/Kristfur/lawnscapes-landscaping) and deployed with Git Pages ([Link to live website](https://kristfur.github.io/lawnscapes-landscaping/))
+
+- Git
+    - Used for version control during the development of the website
+
+- Dev Tools
+    - Used throughout the development process to test code with instant feedback
+
+- Font Awesome
+    - Icons for the social media in footer were obtained from [https://fontawesome.com/](https://fontawesome.com/)
+
+- Favicon.io
+    - Favicon files were created by [https://favicon.io/](https://favicon.io/)
+
+- remove.bg
+    - Whitespace in image background was removed with [https://www.remove.bg/](https://www.remove.bg/)
+
+- balsamiq
+    - Wireframe diagrams were created using [balsamiq](https://balsamiq.com/)
+
