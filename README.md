@@ -433,6 +433,10 @@ The steps to clone the repository are as follows:
 [Unelectable Items](https://stackoverflow.com/questions/924916/is-there-a-way-to-make-a-div-unselectable)
 - Was used to help fix a notable bug during development. More information [here](#notable-fixed-bugs).
 
+[Play Sounds](//https://www.w3schools.com/graphics/game_sound.asp)
+- Coe was used to play sound files for game
+    
+
 ### Media
 
 Website logo was created by me using [Cool Text](https://cooltext.com/).
