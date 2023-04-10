@@ -32,6 +32,7 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
 * [Keyboard Controls](#keyboard-controls)
 * [Lose Page](#lose-page)
 * [Win Page](#win-page)
+* [Leaderboards](#leaderboards)
 
 
 # User Experience
@@ -259,8 +260,22 @@ The color scheme of the website was chosen to be true to the classic game. The g
 ## Win Page
 - Displays win text, the user's time, a text input and two buttons, one to save the score and the other to not save the score.
 - This page makes it clear to the user that they won and it gives them the option to save their score so they can look at it in the future.
+- Times are saved to the nearest millisecond, ensuring the times are more accurate.
 - The scores are saved to local storage and can be accessed through the website on the same device it was saved on.
 - If the user decides to save their score, they must enter a valid name and click save, then they will be taken to the leaderboard page.
 - If the user decides to not save their score, a warning will display, letting the user know their score will not be saved and giving them a final choice to return or continue. 
 
 ![Win page snipet](docs/read-me-images/feature-win-page.JPG)
+
+## Leaderboards
+- The leaderboard displays all of the users past scores that they saved on that device. It displays the rank, anme and time of the top-5 fastest times.
+- Each category has their own leaderboard that the user can easily navigate to from this page using the drop-down menu.
+- If a score had not been saved yet, a placeholder of (...) is displayed instead, indicating that the data is empty.
+- If the user just saved a new score, that score will be highlited so the user can easilt identify it on the leaderboard. That score will still be displayed even if it did not make the top 5 scores. 
+- A back button is present, proving an easy way for the user to return to the home page.
+
+![Leaderboards snipet](docs/read-me-images/feature-leaderboard.JPG)
+
+User's score is not in top 5
+
+![Leaderboards extra score snipet](docs/read-me-images/feature-leaderboard-extra.JPG)
