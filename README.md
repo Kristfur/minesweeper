@@ -35,6 +35,7 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
     * [Lose Page](#lose-page)
     * [Win Page](#win-page)
     * [Leaderboards](#leaderboards)
+    * [Features to Implement](#features-to-implement)
 * [Technologies](#technologies)
 * [Testing](#testing)
     * [Validator Testing](#validator-testing)
@@ -303,6 +304,9 @@ All accesibility criteria were met.
 User's score is not in top 5
 
 ![Leaderboards extra score snipet](docs/read-me-images/feature-leaderboard-extra.JPG)
+
+## Features to Implement
+One feature I would love to implement in the future would be to save all users times to one global database instead of local storage. This would allow users to see eachothers scores and compete with people across the world for a spot on the leaderboard.
 
 # Technologies
 - HTML
