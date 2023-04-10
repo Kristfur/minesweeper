@@ -819,8 +819,7 @@ function keyPress(event) {
     }
 
     //If rules or settings modal open, close them whe 'Escape' pressed
-    if (event.key.toString() == 'Escape' 
-    && (document.getElementById('rules-modal').style.display !== 'none' || 
+    if (event.key.toString() == 'Escape' && (document.getElementById('rules-modal').style.display !== 'none' || 
         document.getElementById('settings-modal').style.display !== 'none')){
         //Close modals
         playSound('click');

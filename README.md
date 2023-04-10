@@ -35,6 +35,10 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
     * [Win Page](#win-page)
     * [Leaderboards](#leaderboards)
 * [Technologies](#technologies)
+* [Testing](3testing)
+    * [Validator Testing](#validator-testing)
+    * [Unfixed Bugs](#unfixed-bugs)
+    * [Notable (Fixed) Bugs](#notable-fixed-bugs)
 
 
 # User Experience
@@ -312,4 +316,40 @@ User's score is not in top 5
 
 - balsamiq
     - Wireframe diagrams were created using [balsamiq](https://balsamiq.com/)
+
+# Testing
+Throughout development there was constant testing to ensure the functions gave the desired outputs and that there was no unpredictable outcomes. Testing was performed on mobile devices as well as desktop browsers to ensure functinality as intended. 
+
+A more structured testing procedure was also performed. Details of this report can be found [here](TESTING.md).
+
+## Validator Testing
+
+- HTML 
+    - No errors showed up when checking with the [W3C Validator](https://validator.w3.org/)
+
+![Home page validation](docs/read-me-images/validator-index.JPG)
+
+![404 page validation](docs/read-me-images/validator-404.JPG)
+
+- CSS
+    - No errors showed up when checking with the [(Jigsaw) Validator](https://jigsaw.w3.org/css-validator/)
+
+![CSS validation](docs/read-me-images/validator-css.JPG)
+
+- JS
+    - Five warnings showed up when checking with [JSHint](https://jshint.com/)
+    - Two of those warnings refer to declaring functions in loops referencing an outer scoped variable. For this, I was folowing a Code Institute example.
+    - The remaining three warnings are refering to 'optional catch binding' only being available is ES10.
+
+![JS validation](docs/read-me-images/validator-js.JPG)
+
+## Unfixed Bugs
+
+Currently there are no know bugs, if you happen to come across a bug, please let me know and I will address it in a future release.
+
+## Notable (Fixed) Bugs 
+
+During development, one notable and recurring bug that has been fixed was the long press for touchscreen devices. It was not possible to place a flag on any of the tiles. I traced the cause of this down to two factors. Firstly, I was using the wrong event listener for such a task, I changed 'touchup' to 'touchend'. This made it possible for a flag to be placed sometimes, but when the long touch occured, the tile items got selected by the device. This made it unpleasant to play because you had to unselect the items before you can keep plaing the game. To fix this, I added the 'preventDefault' method to the event, and also added CSS code that prevents the tiles being selected at all. ([Credit](https://stackoverflow.com/questions/924916/is-there-a-way-to-make-a-div-unselectable): stackoverflow.com  User: aleemb)
+
+These alterations and additions resulted in this bug being fixed.
 
