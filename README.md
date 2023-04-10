@@ -1,6 +1,6 @@
 # Minesweeper
 
-Minesweeper is a logic puzzle game that features a grid of tile. Each tile can be revealled to show a number or a mine. If a mine is revealled, the game is over. The number that is revealed shows how many of it's eight neighboring tiles are mines. The player must use logic to reveal off of the non-mine tiles to win. 
+Minesweeper is a logic puzzle game that features a grid of tiles. Each tile can be revealed to show a number or a mine. If a mine is revealed, the game is over. The number that is revealed shows how many of it's eight neighboring tiles are mines. The player must use logic to reveal all of the non-mine tiles to win. 
 
 [Minesweeper](https://kristfur.github.io/minesweeper/) is a recreation of this classic game in the form of a responsive website that can be played anywhere.
 
@@ -14,7 +14,7 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
         * [Wireframes](#wireframes)        
         * [Layout](#layout)
         * [Color Scheme](#color-scheme)
-    * [Acessibility](#accessibility)
+    * [Accessibility](#accessibility)
 * [Features](#features)
     * [Site Wide](#site-wide)
         * [Header](#header)
@@ -48,32 +48,31 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
 * [Credits](#credits)
     * [Media](#media)
 
-
 # User Experience
 ## Site Goals
-* To provide a fun and quick logic game for the user to play
-* To have an intuitive menu so users don't have to look far for what they want
-* To have a selection of difficulty options for the user to choose from
-* To ensure the game is fully acessible on all devices from desktops to mobile touchscreen devices
-* To ensure the game is fully playable with only a keyboard
+* To provide a fun and quick logic game for the user to play.
+* To have an intuitive menu so users don't have to look far for what they want.
+* To have a selection of difficulty options for the user to choose from.
+* To ensure the game is fully accessible on all devices from desktops to mobile touchscreen devices.
+* To ensure the game is fully playable with only a keyboard.
 
 ## User Stories
-* As a user, I want a fun and quick logic game to play
-* As a user, I want to play an easier version of the game
-* As a user, I want to play a more challenging version of the game
-* As a user, I want to be able to play the game with only a keyboard
-* As a user, I want my previous high scores to be saved
-* As a user, I want the game to have sound that I can toggle on and off
+* As a user, I want a fun and quick logic game to play.
+* As a user, I want to play an easier version of the game.
+* As a user, I want to play a more challenging version of the game.
+* As a user, I want to be able to play the game with only a keyboard.
+* As a user, I want my previous high scores to be saved.
+* As a user, I want the game to have sound that I can toggle on and off.
 
 User Story:
 
 > As a user, I want a fun and quick logic game to play
 
 Acceptance Criteria:
-* It should be clear that it is a game, and how to play
+* It should be clear that it is a game, and how to play.
 
 Implementation:
-* The focus of the home page is a large button the the center that prompts the user to 'PLAY', making it clear that it is a game. The rules can be acessed easily from the home page and during gameplay providing information about how to play.
+* The focus of the home page is a large button at the center that prompts the user to 'PLAY', making it clear that it is a game. The rules can be accessed easily from the home page and during gameplay providing information about how to play.
 
 User Story:
 
@@ -82,17 +81,17 @@ User Story:
 > As a user, I want to play a more challenging version of the game
 
 Acceptance Criteria:
-* The user should be able to change the difficulty of the game with ease, either to an easier version or more difficult version
+* The user should be able to change the difficulty of the game with ease, either to an easier version or more difficult version.
 
 Implementation:
-* The user can navigate to the settings page from the home page and easily select size of the game board and the concentration of mines on the board, modifying the difficulty to the users' will
+* The user can navigate to the settings page from the home page and easily select size of the game board and the concentration of mines on the board, modifying the difficulty to the users' will.
 
 User Story:
 
 > As a user, I want to be able to play the game with only a keyboard
 
 Acceptance Criteria:
-* The game and all of it's features must be fully accessible through only the use of a keyboard
+* The game and all of it's features must be fully accessible through only the use of a keyboard.
 
 Implementation:
 * The user will be able to navigate the website with a keyboard and play the game in it's entirety only using a keyboard. Instructions on keyboard controls will be found in the rules section.
@@ -103,10 +102,10 @@ User Story:
 
 Acceptance Criteria:
 
-* The game must save the users score and have it be visible even on the next session
+* The game must save the users score and have it be visible even on the next session.
 
 Implementation:
-* Once the user completes the game, they will be offered the option to enter they name and save their time. This score will be saved to the local storage and be accessible to the user the next time they open the website
+* Once the user completes the game, they will be offered the option to enter they name and save their time. This score will be saved to the local storage and be accessible to the user the next time they open the website.
 
 User Story:
 
@@ -114,10 +113,10 @@ User Story:
 
 Acceptance Criteria:
 
-* The website must have sound effects that the user can turn on and off
+* The website must have sound effects that the user can turn on and off.
 
 Implementation:
-* In the settings, the user has an option to turn sounds on and off. The sounds provite immidate reactions for every action that is perfomred in the game
+* In the settings, the user has an option to turn sounds on and off. The sounds provide immediate reactions for every action that is performed in the game.
 
 ## Design
 ### Wireframes
@@ -151,21 +150,21 @@ Win page
 ![Design - 404 page](docs/read-me-images/design-404-page.JPG)
 
 ### Layout
-The layout of the content on each page was chosen to minimise distraction and make it easy for the user to navigate the website, so the user can focus on the game and have hastle-free fun. The pages do not overwhelm the user with all of the information always being visible, but provide the option to easily seek the information they may need through intuative buttons. 
+The layout of the content on each page was chosen to minimise distraction and make it easy for the user to navigate the website, so the user can focus on the game and have hassle-free fun. The pages do not overwhelm the user with all the information always being visible, but provide the option to easily seek the information they may need through intuitive buttons. 
 
 ### Color Scheme
-The color scheme of the website was chosen to be true to the classic game. The game board features gray tiles that are reveal colorful numbers. The game becomes more colorful as the game progresses, rewarding the users who play well. The home page mimics the game board with gray buttons and colorful letters 'PLAY', while also providing suitable contract for accessibility.
+The color scheme of the website was chosen to be true to the classic game. The game board features gray tiles that are reveal colorful numbers. The game board becomes more colorful as the game progresses, rewarding the users who play well. The home page mimics the game board with gray buttons and colorful letters 'PLAY', while also providing suitable contrast for accessibility.
 
 ## Accessibility
 The [Wave Accessibility](https://wave.webaim.org/) tool was used for accessibility testing.
 
 Testing was focused on the following:
-- All image elements had an alt description for a screen reader to read out
-- All input fields have labels for each input for a screen reader to read out
-- Color contrast for text meets the minimum ratio
-- Keyboard support for game controls
+- All image elements had an alt description for a screen reader to read out.
+- All input fields have labels for each input for a screen reader to read out.
+- Color contrast for text meets the minimum ratio.
+- Keyboard support for game controls.
 
-All accesibility criteria were met.
+All accessibility criteria were met.
 
 # Features
 ## Site Wide
@@ -176,90 +175,89 @@ All accesibility criteria were met.
 - At any point, from any page, the user may choose to return to the home page by clicking on the logo.
 - When the mouse hovers over the logo, the cursor changes to a pointer letting the user know that the logo is clickable.
 
-![Header snipet](docs/read-me-images/feature-logo.JPG)
+![Header snippet](docs/read-me-images/feature-logo.JPG)
 
 ### Footer
 - Contains a GitHub icon and text prompting the user to follow me on GitHub.
 - Provides the user a link to my GitHub page that open in a new tab when clicked.
 
-![Footer snipet](docs/read-me-images/feature-github.JPG)
+![Footer snippet](docs/read-me-images/feature-github.JPG)
 
 ### Favicon
-- The favicon is the reconisable bomb icon that appears in the game.
+- The favicon is the recognisable bomb icon that appears in the game.
 - Allows the user to easily identify website from browser tabs.
 
-![Favicon snipet](docs/read-me-images/feature-favicon.JPG)
+![Favicon snippet](docs/read-me-images/feature-favicon.JPG)
 
 ### 404 Page
 - This page will display if the user navigates to a broken link.
 - The page features text and a link that brings the user back to the home page.
-- Additionaly, the 404 page will automaticaly redirect the user to the home page aster 10 seconds if no action is taken.
-- This informs the user that they entered an invaild link and provides them an easy way to get back to safety.
+- Additionally, the 404 page will automatically redirect the user to the home page aster 10 seconds if no action is taken.
+- This informs the user that they entered an invalid link and provides them an easy way to get back to safety.
 
-![404 page snipet](docs/read-me-images/feature-404.JPG)
+![404 page snippet](docs/read-me-images/feature-404.JPG)
 
 ## Home Page
 - Main content of the home page is a large play button.
-- The large play button is easily identifyable and makes it clear to the user that they are about to play a game.
-- There are several smaller buttons that provide the user acess to the rules, settings and leaderboard while not getting in the way of or distracting from the play button.
+- The large play button is easily identifiable and makes it clear to the user that they are about to play a game.
+- There are several smaller buttons that provide the user access to the rules, settings and leaderboard while not getting in the way of or distracting from the play button.
 
-![Home page snipet](docs/read-me-images/feature-home.JPG)
+![Home page snippet](docs/read-me-images/feature-home.JPG)
 
 ## Rules Page
-- Informs the user on how to play the game, the controls are easy and intuative.
+- Informs the user on how to play the game, the controls are easy and intuitive.
 - In this page, the user can learn what the aim of the game is, and how to play.
 - The rules page can be closed by clicking out of the container, or by clicking on the (x) at the top.
 - The (x) glows red when the user hovers over it, indicating that it can be clicked.
 
-![Rules page snipet](docs/read-me-images/feature-rules.JPG)
+![Rules page snippet](docs/read-me-images/feature-rules.JPG)
 
 ## Settings Page
 - Here the user can change the difficulty of the game, they can increase or decrease the size of the board and the concentration of mines.
-- This allows the user to play an easier version of the game, and to play a more challening version.
+- This allows the user to play an easier version of the game, and to play a more challenging version.
 - The user can also choose to enable sound for the game, providing a more engaging gaming experience.
 - The settings page can be closed by clicking out of the container, or by clicking on the (x) at the top.
 - The (x) glows red when the user hovers over it, indicating that it can be clicked.
 
-![Settings page snipet](docs/read-me-images/feature-settings.JPG)
+![Settings page snippet](docs/read-me-images/feature-settings.JPG)
 
 ## Game Board
 ### Game Information
-- Displays the number of mines remaining and the time elapsed since the first click
+- Displays the number of mines remaining and the time elapsed since the first click.
 - Mines remaining gives the user information to help them solve the game. Every flag the user places will reduce this number, any incorrectly flags will skew this number, punishing the user for placing flags incorrectly.
 - The timer gives the user some live feedback on how fast they are completing the game.
 
-![Game page snipet](docs/read-me-images/feature-mines-left-timer.JPG)
+![Game page snippet](docs/read-me-images/feature-mines-left-timer.JPG)
 
 ### Helpful Buttons
 
-- The game page features four buttons with different, but self explanitory actions:
-    - Reset - Resets the game board to a new game. (For when the user wants to start a new game)
+- The game page features four buttons with different, but self explanatory actions:
+    - Reset - Resets the game board to a new game. (For when the user wants to start a new game).
     - Home - Brings the user to the home screen.
-    - Rules - Displays the rules to the user. (For when the user forgets the rules, it does not reset the current game)
+    - Rules - Displays the rules to the user. (For when the user forgets the rules, it does not reset the current game).
     - Leaderboard - Brings the user to the leaderboard page.
 
-![Helpful buttons sinpet](docs/read-me-images/feature-game-buttons.JPG)
+![Helpful buttons snippet](docs/read-me-images/feature-game-buttons.JPG)
 
 ## Gameplay
 
-![Gameplay snipet](docs/read-me-images/feature-gameplay.JPG)
-
+![Gameplay snippet](docs/read-me-images/feature-gameplay.JPG)
 
 ### Click to Reveal
 - Every tile is either a mine or a number representing the number of neighboring mines, zeros are blank tiles.
 - The numbers on the tiles are large and easily readable, conveying it's information to the user in an effective manner.
-- The first tile the user clicks is never a mine. This prevents the situation where the user loses without event starting to play. This feature greatly improves the gaming experience.
-- If the user reveals a tile with no neighboring mines, a zero (or an empty tile), the game will automaticaly reveal all of the neighboring tiles, since none of them are mines. This removes the tedious task that the user would be doing anyway, improving the gaming experience. 
+- The first tile the user clicks is never a mine. This prevents the situation where the user loses without even getting a chance to play. This feature greatly improves the gaming experience.
+- If the user reveals a tile with no neighboring mines, a zero (or an empty tile), the game will automatically reveal all of the neighboring tiles, since none of them are mines. This removes the tedious task that the user would be doing anyway, improving the gaming experience. 
 
 ### Flags
 - Are used to mark where the user thinks mines are located
-- The flags also help the user by making the tile never be reveal when they click on it, helping to prevent misclicks that would end the game. The user must first remove the flag before thay can reveal the tile.
+- The flags also help the user by making the tile never be reveal when they click on it, helping to prevent mis clicks that would end the game. The user must first remove the flag before they can reveal the tile.
 
-![Flag snipet](docs/read-me-images/feature-flag.JPG)
+![Flag snippet](docs/read-me-images/feature-flag.JPG)
 
 ### Sounds
-- The game is best playes with sounds enabled, the user can enable sounds through the settings.
-- Every action has a unique sound corrosponding with what action was performed, the different sounding actions are:
+- The game is best played with sounds enabled, the user can enable sounds through the settings.
+- Every action has a unique sound corresponding with what action was performed, the different sounding actions are:
     - Click on a menu button
     - Reveal a tile
     - Place/remove flag on/from a tile
@@ -271,42 +269,42 @@ All accesibility criteria were met.
 - The game supports full keyboard controls, these controls are easy to learn. (WASD to move focus, Q to reveal tile, E to place/remove flag)
 - This allows users to enjoy the game using only a keyboard.
 - The user can find the keyboard controls in the settings.
-- When using keyboard controls, the focused tile will be highlited so the user can easilt identify it.
+- When using keyboard controls, the focused tile will be highlighted so the user can easily identify it.
 - When using the mouse to click after the keyboard focus has appeared, the keyboard focus will disappear to remove confusion. 
 
-![Keyboard focus snipet](docs/read-me-images/feature-keyboard-focus.JPG)
+![Keyboard focus snippet](docs/read-me-images/feature-keyboard-focus.JPG)
 
 ## Lose Page
 - When the user reveals a mine tile, they lose the game and this page displays. It features a home button and a try again button.
-- This page mmakes it clear to the user that they lost and  prevents the user from playing that game further. It gives the user the option to return to the home menu, or to immediately try again.
+- This page makes it clear to the user that they lost and prevents the user from playing that game further. It gives the user the option to return to the home menu, or to immediately try again.
 
-![Lose page snipet](docs/read-me-images/feature-lose-page.JPG)
+![Lose page snippet](docs/read-me-images/feature-lose-page.JPG)
 
 ## Win Page
 - Displays win text, the user's time, a text input and two buttons, one to save the score and the other to not save the score.
-- This page makes it clear to the user that they won and it gives them the option to save their score so they can look at it in the future.
+- This page makes it clear to the user that they won and it gives them the option to save their score so they can look at it in the future, and try to beat their previous scores.
 - Times are saved to the nearest millisecond, ensuring the times are more accurate.
 - The scores are saved to local storage and can be accessed through the website on the same device it was saved on.
 - If the user decides to save their score, they must enter a valid name and click save, then they will be taken to the leaderboard page.
 - If the user decides to not save their score, a warning will display, letting the user know their score will not be saved and giving them a final choice to return or continue. 
 
-![Win page snipet](docs/read-me-images/feature-win-page.JPG)
+![Win page snippet](docs/read-me-images/feature-win-page.JPG)
 
 ## Leaderboards
-- The leaderboard displays all of the users past scores that they saved on that device. It displays the rank, anme and time of the top-5 fastest times.
+- The leaderboard displays all the users past scores that they saved on that device. It displays the rank, name and time of the top-5 fastest times.
 - Each category has their own leaderboard that the user can easily navigate to from this page using the drop-down menu.
 - If a score had not been saved yet, a placeholder of (...) is displayed instead, indicating that the data is empty.
-- If the user just saved a new score, that score will be highlited so the user can easilt identify it on the leaderboard. That score will still be displayed even if it did not make the top 5 scores. 
+- If the user just saved a new score, that score will be highlighted so the user can easily identify it on the leaderboard. That score will still be displayed even if it did not make the top 5 scores. 
 - A back button is present, proving an easy way for the user to return to the home page.
 
-![Leaderboards snipet](docs/read-me-images/feature-leaderboard.JPG)
+![Leaderboards snippet](docs/read-me-images/feature-leaderboard.JPG)
 
-User's score is not in top 5
+User's score is not in top 5:
 
-![Leaderboards extra score snipet](docs/read-me-images/feature-leaderboard-extra.JPG)
+![Leaderboards extra score snippet](docs/read-me-images/feature-leaderboard-extra.JPG)
 
 ## Features to Implement
-One feature I would love to implement in the future would be to save all users times to one global database instead of local storage. This would allow users to see eachothers scores and compete with people across the world for a spot on the leaderboard.
+One feature I would love to implement in the future would be to save all users times to one global database instead of local storage. This would allow users to see each others scores and compete with people across the world for a spot on the leaderboard.
 
 # Technologies
 - HTML
@@ -340,7 +338,7 @@ One feature I would love to implement in the future would be to save all users t
     - Wireframe diagrams were created using [balsamiq](https://balsamiq.com/)
 
 # Testing
-Throughout development there was constant testing to ensure the functions gave the desired outputs and that there was no unpredictable outcomes. Testing was performed on mobile devices as well as desktop browsers to ensure functinality as intended. 
+Throughout development there was constant testing to ensure the functions gave the desired outputs and that there were no unpredictable outcomes. Testing was performed on mobile devices as well as desktop browsers to ensure functionality as intended. 
 
 A more structured testing procedure was also performed. Details of this report can be found [here](TESTING.md).
 
@@ -359,9 +357,9 @@ A more structured testing procedure was also performed. Details of this report c
 ![CSS validation](docs/read-me-images/validator-css.JPG)
 
 - JS
-    - Five warnings showed up when checking with [JSHint](https://jshint.com/)
-    - Two of those warnings refer to declaring functions in loops referencing an outer scoped variable. For this, I was folowing a Code Institute example.
-    - The remaining three warnings are refering to 'optional catch binding' only being available is ES10.
+    - Five warnings showed up when checking with [JSHint](https://jshint.com/).
+    - Two of those warnings refer to declaring functions in loops referencing an outer scoped variable. For this, I was following a Code Institute example.
+    - The remaining three warnings are referring to 'optional catch binding' only being available is ES10.
 
 ![JS validation](docs/read-me-images/validator-js.JPG)
 
@@ -371,7 +369,7 @@ Currently there are no know bugs, if you happen to come across a bug, please let
 
 ## Notable (Fixed) Bugs 
 
-During development, one notable and recurring bug that has been fixed was the long press for touchscreen devices. It was not possible to place a flag on any of the tiles. I traced the cause of this down to two factors. Firstly, I was using the wrong event listener for such a task, I changed 'touchup' to 'touchend'. This made it possible for a flag to be placed sometimes, but when the long touch occured, the tile items got selected by the device. This made it unpleasant to play because you had to unselect the items before you can keep plaing the game. To fix this, I added the 'preventDefault' method to the event, and also added CSS code that prevents the tiles being selected at all. ([Credit](https://stackoverflow.com/questions/924916/is-there-a-way-to-make-a-div-unselectable): stackoverflow.com  User: aleemb)
+During development, one notable and recurring bug that has been fixed was the long press for touchscreen devices. It was not possible to place a flag on any of the tiles. I traced the cause of this down to two factors. Firstly, I was using the wrong event listener for such a task, I changed 'touchup' to 'touchend'. This made it possible for a flag to be placed sometimes, but when the long touch occurred, the tile items got selected by the device. This made it unpleasant to play because you had to unselect the items before you can keep playing the game. To fix this, I added the 'preventDefault' method to the event, and added CSS code that prevents the tiles being selected at all. ([Credit](https://stackoverflow.com/questions/924916/is-there-a-way-to-make-a-div-unselectable): stackoverflow.com  User: aleemb)
 
 These alterations and additions resulted in this bug being fixed.
 
@@ -384,8 +382,7 @@ The following Git commands were used throughput development:
 
     git add <file> 
 
-Was uesd to add files to the staging area before they are commited.
-
+Was used to add files to the staging area before they are committed.
 
     git commit -m "commit message"
 
@@ -393,7 +390,7 @@ Was used to commit changes to the local repository queue.
 
     git push
 
-Was uesd to push all committed code to the remote repository on GitHub.
+Was used to push all committed code to the remote repository on GitHub.
 
 ## Deployment to GitHub Pages
 This website was deployed to GitHub Pages, the steps of deployment are:
@@ -403,7 +400,7 @@ This website was deployed to GitHub Pages, the steps of deployment are:
 4. Click 'save'
 5. The live website link will appear near the top of the page after some time
 
-The live linke can be found here [https://kristfur.github.io/minesweeper/](https://kristfur.github.io/minesweeper/)
+The live link can be found here [https://kristfur.github.io/minesweeper/](https://kristfur.github.io/minesweeper/)
 
 ## Clone the Repository Code Locally
 
@@ -419,7 +416,7 @@ The steps to clone the repository are as follows:
 ## Credits
 
 [Love Maths](https://github.com/AJGreaves/love-maths)
-- Elements of this project were used as a referance for the website and documentation. 
+- Elements of this project were used as a reference for the website and documentation. 
 
 [Grid Garden](https://cssgridgarden.com/)
 - Was used to learn how to use the CSS property.
@@ -427,9 +424,8 @@ The steps to clone the repository are as follows:
 [Modal](https://www.w3schools.com/howto/howto_css_modals.asp)
 - Was used to learn hot to create and use a modal.
 
-[Unselectable Items](https://stackoverflow.com/questions/924916/is-there-a-way-to-make-a-div-unselectable)
+[Unelectable Items](https://stackoverflow.com/questions/924916/is-there-a-way-to-make-a-div-unselectable)
 - Was used to help fix a notable bug during development. More information [here](#notable-fixed-bugs).
-
 
 ### Media
 
