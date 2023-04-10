@@ -35,7 +35,7 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
     * [Win Page](#win-page)
     * [Leaderboards](#leaderboards)
 * [Technologies](#technologies)
-* [Testing](3testing)
+* [Testing](#testing)
     * [Validator Testing](#validator-testing)
     * [Unfixed Bugs](#unfixed-bugs)
     * [Notable (Fixed) Bugs](#notable-fixed-bugs)
