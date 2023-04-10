@@ -27,7 +27,7 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
         * [Game Information](#game-information)
         * [Helpful Buttons](#helpful-buttons)
     * [Gameplay](#gameplay)
-        * [Click To Reveal](#click-to-reveal)
+        * [Click to Reveal](#click-to-reveal)
         * [Flags](#flags)
         * [Sounds](#sounds)
     * [Keyboard Controls](#keyboard-controls)
@@ -39,6 +39,10 @@ Minesweeper is a logic puzzle game that features a grid of tile. Each tile can b
     * [Validator Testing](#validator-testing)
     * [Unfixed Bugs](#unfixed-bugs)
     * [Notable (Fixed) Bugs](#notable-fixed-bugs)
+* [Deployment]
+    * [Version Control](#version-control)
+    * [Deployment to GitHub Pages](#deployment-to-github-pages)
+    * [Clone the Repository Code Locally](#clone-the-repository-code-locally)
 
 
 # User Experience
@@ -226,7 +230,7 @@ The color scheme of the website was chosen to be true to the classic game. The g
 ![Gameplay snipet](docs/read-me-images/feature-gameplay.JPG)
 
 
-### Click To Reveal
+### Click to Reveal
 - Every tile is either a mine or a number representing the number of neighboring mines, zeros are blank tiles.
 - The numbers on the tiles are large and easily readable, conveying it's information to the user in an effective manner.
 - The first tile the user clicks is never a mine. This prevents the situation where the user loses without event starting to play. This feature greatly improves the gaming experience.
@@ -353,3 +357,43 @@ During development, one notable and recurring bug that has been fixed was the lo
 
 These alterations and additions resulted in this bug being fixed.
 
+# Deployment
+
+## Version Control
+This website was pushed to GitHub to the remote repository '[minesweeper](https://github.com/Kristfur/minesweeper)'.
+
+The following Git commands were used throughput development:
+
+    git add <file> 
+
+Was uesd to add files to the staging area before they are commited.
+
+
+    git commit -m "commit message"
+
+Was used to commit changes to the local repository queue.
+
+    git push
+
+Was uesd to push all committed code to the remote repository on GitHub.
+
+## Deployment to GitHub Pages
+This website was deployed to GitHub Pages, the steps of deployment are:
+1. In the GitHub repository, navigate to settings
+2. In settings, navigate to Pages
+3. In the source selection, select the branch *main*
+4. Click 'save'
+5. The live website link will appear near the top of the page after some time
+
+The live linke can be found here [https://kristfur.github.io/minesweeper/](https://kristfur.github.io/minesweeper/)
+
+## Clone the Repository Code Locally
+
+The steps to clone the repository are as follows:
+
+1. From the repository, click the *code* drop down menu
+2. Click on *HTTPS*
+3. Copy the link
+4. Open your IDE (that has git installed)
+5. Paste the git command into the IDE terminal
+6. The project is now cloned on your local machine
